@@ -1,0 +1,49 @@
+[
+  {
+    "ContainingType": "API.Presentation.Controllers.TrilhaUsuarioController",
+    "Method": "PegarTrilhasDoUsuario",
+    "RelativePath": "api/v1/usuarios/{IdUsuario}/trilhas",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "IdUsuario",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "Pagina",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Tamanho",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Presentation.Controllers.ConteudoTrilhaUsuarioController",
+    "Method": "PegarTodasOsConteudosTrilhaUsuario",
+    "RelativePath": "api/v1/usuarios/{IdUsuario}/trilhas/{IdTrilha}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "IdUsuario",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "IdTrilha",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

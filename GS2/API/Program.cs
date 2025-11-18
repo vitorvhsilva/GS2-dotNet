@@ -1,25 +1,72 @@
+using API.Application.Interface;
+using API.Application.Service;
+using API.Domain.Interface;
+using API.Infraestructure.Data.AppData;
+using API.Infraestructure.Data.Repositories;
+using Asp.Versioning;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.AddDbContext<ApplicationDbContext>(x =>
+{
+    x.UseOracle(builder.Configuration.GetConnectionString("Oracle"));
+});
 
+builder.Services.AddTransient<ITrilhaUsuarioUseCase, TrilhaUsuarioUseCase>();
+builder.Services.AddTransient<ITrilhaUsuarioRepository, TrilhaUsuarioRepository>();
+
+builder.Services.AddTransient<ITrilhaUseCase, TrilhaUseCase>();
+builder.Services.AddTransient<ITrilhaRepository, TrilhaRepository>();
+
+builder.Services.AddTransient<IConteudoTrilhaUsuarioUseCase, ConteudoTrilhaUsuarioUseCase>();
+builder.Services.AddTransient<IConteudoTrilhaUsuarioRepository, ConteudoTrilhaUsuarioRepository>();
+
+builder.Services.AddTransient<IConteudoTrilhaUseCase, ConteudoTrilhaUseCase>();
+builder.Services.AddTransient<IConteudoTrilhaRepository, ConteudoTrilhaRepository>();
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader();
+    });
+});
+
+builder.Services.AddApiVersioning(options =>
+{
+    options.DefaultApiVersion = new ApiVersion(1, 0);
+    options.AssumeDefaultVersionWhenUnspecified = true;
+    options.ReportApiVersions = true;
+    options.ApiVersionReader = ApiVersionReader.Combine(
+        new UrlSegmentApiVersionReader(),
+        new HeaderApiVersionReader("x-api-version"),
+        new QueryStringApiVersionReader("api-version")
+    );
+})
+.AddApiExplorer(options =>
+{
+    options.GroupNameFormat = "'v'VVV";
+    options.SubstituteApiVersionInUrl = true;
+});
+
+builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
+app.UseCors("AllowAll");
 app.UseHttpsRedirection();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();
