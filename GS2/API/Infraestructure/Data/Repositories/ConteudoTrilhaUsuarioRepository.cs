@@ -11,7 +11,13 @@ namespace API.Infraestructure.Data.Repositories
         public ConteudoTrilhaUsuarioRepository(ApplicationDbContext context)
         {
             _context = context;
-        }   
+        }
+
+        public async Task<ConteudoTrilhaUsuario> PegarConteudoTrilhaUsuario(string IdUsuario, string IdConteudo)
+        {
+            return await _context.ConteudosTrilhaUsuario.FirstOrDefaultAsync(ct => ct.IdUsuario == IdUsuario && ct.IdConteudoTrilha == IdConteudo);
+        }
+
         public async Task<IEnumerable<ConteudoTrilhaUsuario>> PegarTodasOsConteudosTrilhaUsuario(string IdUsuario, string IdTrilha)
         {
             return await _context.ConteudosTrilhaUsuario.Where(ct => ct.IdUsuario == IdUsuario && ct.ConteudoTrilha.IdTrilha == IdTrilha).ToListAsync();

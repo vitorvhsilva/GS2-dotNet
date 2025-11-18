@@ -40,7 +40,6 @@ namespace API.Presentation.Controllers
                         ctu.IdConteudoTrilha,
                         conteudoTrilha.NomeConteudoTrilha,
                         conteudoTrilha.TipoConteudoTrilha,
-                        conteudoTrilha.TextoConteudoTrilha,
                         StringUtil.boolean(ctu.ConteudoTrilhaConcluidaUsuario)
                     ));
                 }
@@ -49,6 +48,35 @@ namespace API.Presentation.Controllers
             var response = new
             {
                 data = conteudoTrilhasCompletas
+            };
+
+            return Ok(response);
+        }
+
+        [HttpGet("{IdUsuario}/trilhas/{IdTrilha}/conteudos/{IdConteudo}")]
+        public async Task<IActionResult> PegarConteudoTrilhaUsuario(
+            string IdUsuario,
+            string IdTrilha,
+            string IdConteudo
+            )
+        {
+            var conteudoTrilhaUsuario = await _conteudoTrilhaUsuarioUseCase.PegarConteudoTrilhaUsuario(IdUsuario, IdConteudo);
+            var conteudoTrilha = await _conteudoTrilhaUseCase.PegarConteudoTrilha(IdConteudo);
+
+            if (conteudoTrilha == null || conteudoTrilhaUsuario == null)
+            {
+                return NotFound();
+            }
+
+            var response = new
+            {
+                data = new ConteudoTrilhaCompleta(
+                    conteudoTrilha.IdConteudoTrilha,
+                    conteudoTrilha.NomeConteudoTrilha,
+                    conteudoTrilha.TipoConteudoTrilha,
+                    conteudoTrilha.TextoConteudoTrilha,
+                    StringUtil.boolean(conteudoTrilhaUsuario.ConteudoTrilhaConcluidaUsuario)
+                )
             };
 
             return Ok(response);

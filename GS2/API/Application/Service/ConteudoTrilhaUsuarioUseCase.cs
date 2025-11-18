@@ -12,6 +12,11 @@ namespace API.Application.Service
             _conteudoTrilhaUsuarioRepository = conteudoTrilhaUsuarioRepository;
         }
 
+        public async Task<ConteudoTrilhaUsuario> PegarConteudoTrilhaUsuario(string IdUsuario, string IdConteudo)
+        {
+            return await _conteudoTrilhaUsuarioRepository.PegarConteudoTrilhaUsuario(IdUsuario, IdConteudo);
+        }
+
         public async Task<IEnumerable<ConteudoTrilhaUsuario>> PegarTodasOsConteudosTrilhaUsuario(string IdUsuario, string IdTrilha)
         {
             return await _conteudoTrilhaUsuarioRepository.PegarTodasOsConteudosTrilhaUsuario(IdUsuario, IdTrilha);

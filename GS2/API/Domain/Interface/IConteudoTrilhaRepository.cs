@@ -5,5 +5,6 @@ namespace API.Domain.Interface
     public interface IConteudoTrilhaRepository
     {
         public Task<IEnumerable<ConteudoTrilha>> PegarTodasOsConteudosTrilha(string IdTrilha);
+        public Task<ConteudoTrilha> PegarConteudoTrilha(string IdConteudo);
     }
 }
