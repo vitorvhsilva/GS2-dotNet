@@ -5,7 +5,7 @@
     "version": "1.0"
   },
   "paths": {
-    "/api/v1/usuarios/{IdUsuario}/trilhas/{IdTrilha}": {
+    "/api/v1/usuarios/{IdUsuario}/trilhas/{IdTrilha}/conteudos": {
       "get": {
         "tags": [
           "ConteudoTrilhaUsuario"
@@ -139,6 +139,36 @@
               "type": "integer",
               "format": "int32",
               "default": 5
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/v1/usuarios/{IdUsuario}/trilhas/{IdTrilha}": {
+      "get": {
+        "tags": [
+          "TrilhaUsuario"
+        ],
+        "parameters": [
+          {
+            "name": "IdUsuario",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "IdTrilha",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
             }
           }
         ],

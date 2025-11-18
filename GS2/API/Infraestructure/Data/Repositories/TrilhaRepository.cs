@@ -16,5 +16,10 @@ namespace API.Infraestructure.Data.Repositories
         {
             return await _context.Trilhas.ToListAsync();
         }
+
+        public async  Task<Trilha> PegarTrilha(string IdTrilha)
+        {
+            return await _context.Trilhas.FirstOrDefaultAsync(t => t.IdTrilha == IdTrilha);
+        }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using API.Application.Interface;
+using API.Application.Service;
 using API.Application.Util;
+using API.Domain.Entities;
 using API.Presentation.Dto.Output;
 using Asp.Versioning;
 using Microsoft.AspNetCore.Mvc;
@@ -60,6 +62,62 @@ namespace API.Presentation.Controllers
                 Pagina,
                 Tamanho
             );
+
+            return Ok(response);
+        }
+
+        [HttpGet("{IdUsuario}/trilhas/{IdTrilha}")]
+        public async Task<IActionResult> PegarTrilhaDoUsuario(
+            string IdUsuario,
+            string IdTrilha)
+        {
+            var trilhaUsuario = await _trilhaUsuarioUseCase.PegarTrilhaDoUsuario(IdUsuario, IdTrilha);
+            var trilha = await _trilhaUseCase.PegarTrilha(IdTrilha);
+
+            if (trilha == null || trilhaUsuario == null)
+            {
+                return NotFound();
+            }
+
+            var dados = new TrilhaUsuarioCompleta(
+                    IdTrilha,
+                    trilha.NomeTrilha,
+                    trilha.QuantidadeConteudoTrilha,
+                    StringUtil.boolean(trilhaUsuario.TrilhaConcluidaUsuario)
+                );
+
+            var response = new HateoasResponse<TrilhaUsuarioCompleta>(dados);
+
+            response.AddLink(
+                "self",
+                Url.Action(nameof(PegarTrilhaDoUsuario),
+                    new { IdUsuario, IdTrilha })!,
+                "GET"
+            );
+
+            response.AddLink(
+                "trilhasDoUsuario",
+                Url.Action(nameof(PegarTrilhasDoUsuario),
+                    new { IdUsuario })!,
+                "GET"
+            );
+
+            response.AddLink(
+                "conteudosDaTrilha",
+                Url.Action("PegarTodasOsConteudosTrilhaUsuario", "ConteudoTrilhaUsuario",
+                    new { IdUsuario, IdTrilha })!,
+                "GET"
+            );
+
+            if (!StringUtil.boolean(trilhaUsuario.TrilhaConcluidaUsuario))
+            {
+                response.AddLink(
+                    "concluirTrilha",
+                    Url.Action("ConcluirTrilhaUsuario", "TrilhaUsuario",
+                        new { IdUsuario, IdTrilha })!,
+                    "PATCH"
+                );
+            }
 
             return Ok(response);
         }

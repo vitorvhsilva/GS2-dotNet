@@ -13,14 +13,16 @@ namespace API.Presentation.Controllers
     {
         private readonly IConteudoTrilhaUsuarioUseCase _conteudoTrilhaUsuarioUseCase;
         private readonly IConteudoTrilhaUseCase _conteudoTrilhaUseCase;
+        private readonly ITrilhaUsuarioUseCase _trilhaUsuarioUseCase;
 
-        public ConteudoTrilhaUsuarioController(IConteudoTrilhaUsuarioUseCase conteudoTrilhaUsuarioUseCase, IConteudoTrilhaUseCase conteudoTrilhaUseCase)
+        public ConteudoTrilhaUsuarioController(IConteudoTrilhaUsuarioUseCase conteudoTrilhaUsuarioUseCase, IConteudoTrilhaUseCase conteudoTrilhaUseCase, ITrilhaUsuarioUseCase trilhaUsuarioUseCase)
         {
             _conteudoTrilhaUsuarioUseCase = conteudoTrilhaUsuarioUseCase;
             _conteudoTrilhaUseCase = conteudoTrilhaUseCase;
+            _trilhaUsuarioUseCase = trilhaUsuarioUseCase;
         }
 
-        [HttpGet("{IdUsuario}/trilhas/{IdTrilha}")]
+        [HttpGet("{IdUsuario}/trilhas/{IdTrilha}/conteudos")]
         public async Task<IActionResult> PegarTodasOsConteudosTrilhaUsuario(
             string IdUsuario,
             string IdTrilha)
@@ -45,9 +47,14 @@ namespace API.Presentation.Controllers
                 }
             }
 
+            var trilha = await _trilhaUsuarioUseCase.PegarTrilhaDoUsuario(IdUsuario, IdTrilha);
+
             var response = new
             {
-                data = conteudoTrilhasCompletas
+                data = new {
+                    trilhaConcluida = StringUtil.boolean(trilha.TrilhaConcluidaUsuario),
+                    conteudos = conteudoTrilhasCompletas
+                }
             };
 
             return Ok(response);
@@ -58,7 +65,7 @@ namespace API.Presentation.Controllers
             string IdUsuario,
             string IdTrilha,
             string IdConteudo
-            )
+        )
         {
             var conteudoTrilhaUsuario = await _conteudoTrilhaUsuarioUseCase.PegarConteudoTrilhaUsuario(IdUsuario, IdConteudo);
             var conteudoTrilha = await _conteudoTrilhaUseCase.PegarConteudoTrilha(IdConteudo);
@@ -68,16 +75,52 @@ namespace API.Presentation.Controllers
                 return NotFound();
             }
 
-            var response = new
+            var conteudosTrilha = await _conteudoTrilhaUseCase.PegarTodasOsConteudosTrilha(IdTrilha);
+            var listaOrdenada = conteudosTrilha.OrderBy(c => c.IdConteudoTrilha).ToList();
+
+            int indexAtual = listaOrdenada.FindIndex(c => c.IdConteudoTrilha == IdConteudo);
+
+            string linkNext =
+                indexAtual >= 0 && indexAtual < listaOrdenada.Count - 1
+                    ? Url.Action(nameof(PegarConteudoTrilhaUsuario),
+                        new { IdUsuario, IdTrilha, IdConteudo = listaOrdenada[indexAtual + 1].IdConteudoTrilha })
+                    : null;
+
+            string linkPrev =
+                indexAtual > 0
+                    ? Url.Action(nameof(PegarConteudoTrilhaUsuario),
+                        new { IdUsuario, IdTrilha, IdConteudo = listaOrdenada[indexAtual - 1].IdConteudoTrilha })
+                    : null;
+
+            var data = new ConteudoTrilhaCompleta(
+                conteudoTrilha.IdConteudoTrilha,
+                conteudoTrilha.NomeConteudoTrilha,
+                conteudoTrilha.TipoConteudoTrilha,
+                conteudoTrilha.TextoConteudoTrilha,
+                StringUtil.boolean(conteudoTrilhaUsuario.ConteudoTrilhaConcluidaUsuario)
+            );
+
+            var response = new HateoasResponse<ConteudoTrilhaCompleta>(data);
+
+            response.AddLink("self",
+                Url.Action(nameof(PegarConteudoTrilhaUsuario), new { IdUsuario, IdTrilha, IdConteudo }),
+                "GET");
+
+            response.AddLink("listarConteudos",
+                Url.Action("PegarTodasOsConteudosTrilhaUsuario", "ConteudoTrilhaUsuario",
+                    new { IdUsuario, IdTrilha }),
+                "GET");
+
+            if (!StringUtil.boolean(conteudoTrilhaUsuario.ConteudoTrilhaConcluidaUsuario))
             {
-                data = new ConteudoTrilhaCompleta(
-                    conteudoTrilha.IdConteudoTrilha,
-                    conteudoTrilha.NomeConteudoTrilha,
-                    conteudoTrilha.TipoConteudoTrilha,
-                    conteudoTrilha.TextoConteudoTrilha,
-                    StringUtil.boolean(conteudoTrilhaUsuario.ConteudoTrilhaConcluidaUsuario)
-                )
-            };
+                response.AddLink("concluirConteudo",
+                    Url.Action(nameof(ConcluirConteudoTrilhaUsuario),
+                        new { IdUsuario, IdTrilha, IdConteudo }),
+                    "PATCH");
+            }
+
+            response.AddLink("proximo", linkNext, "GET");
+            response.AddLink("anterior", linkPrev, "GET");
 
             return Ok(response);
         }

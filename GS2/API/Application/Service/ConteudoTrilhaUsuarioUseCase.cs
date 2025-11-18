@@ -1,4 +1,5 @@
 ﻿using API.Application.Interface;
+using API.Application.Util;
 using API.Domain.Entities;
 using API.Domain.Interface;
 
@@ -18,7 +19,7 @@ namespace API.Application.Service
         {
             await _conteudoTrilhaUsuarioRepository.ConcluirConteudoTrilhaUsuario(IdUsuario, IdConteudo);
             var conteudosTrilha = await PegarTodasOsConteudosTrilhaUsuario(IdUsuario, IdTrilha);
-            if (!conteudosTrilha.Any(ct => ct.ConteudoTrilhaConcluidaUsuario == "N"))
+            if (!conteudosTrilha.Any(ct => !StringUtil.boolean(ct.ConteudoTrilhaConcluidaUsuario)))
             {
                 await _trilhaUsuarioRepository.ConcluirTrilhaDoUsuario(IdUsuario, IdTrilha);
             }

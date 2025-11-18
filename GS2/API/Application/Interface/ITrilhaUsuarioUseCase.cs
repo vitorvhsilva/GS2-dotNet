@@ -5,5 +5,6 @@ namespace API.Application.Interface
     public interface ITrilhaUsuarioUseCase
     {
         public Task<IEnumerable<TrilhaUsuario>> PegarTrilhasDoUsuario(string IdUsuario);
+        public Task<TrilhaUsuario> PegarTrilhaDoUsuario(string IdUsuario, string IdTrilha);
     }
 }

@@ -6,15 +6,20 @@ namespace API.Application.Service
 {
     public class TrilhaUseCase : ITrilhaUseCase
     {
-        private readonly ITrilhaRepository _trilhaUsuarioRepository;
+        private readonly ITrilhaRepository _trilhaRepository;
         public TrilhaUseCase(ITrilhaRepository trilhaUsuarioRepository)
         {
-            _trilhaUsuarioRepository = trilhaUsuarioRepository;
+            _trilhaRepository = trilhaUsuarioRepository;
         }
 
         public async Task<IEnumerable<Trilha>> PegarTodasAsTrilhas()
         {
-            return await _trilhaUsuarioRepository.PegarTodasAsTrilhas();
+            return await _trilhaRepository.PegarTodasAsTrilhas();
+        }
+
+        public async Task<Trilha> PegarTrilha(string IdTrilha)
+        {
+            return await _trilhaRepository.PegarTrilha(IdTrilha);
         }
     }
 }

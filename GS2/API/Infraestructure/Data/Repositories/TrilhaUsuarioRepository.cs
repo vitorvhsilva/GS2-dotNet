@@ -22,6 +22,11 @@ namespace API.Infraestructure.Data.Repositories
             await _context.SaveChangesAsync();
         }
 
+        public async Task<TrilhaUsuario> PegarTrilhaDoUsuario(string IdUsuario, string IdTrilha)
+        {
+            return await _context.TrilhasUsuarios.Where(tu => tu.IdUsuario == IdUsuario && tu.IdTrilha == IdTrilha).FirstOrDefaultAsync();
+        }
+
         public async Task<IEnumerable<TrilhaUsuario>> PegarTrilhasDoUsuario(string IdUsuario)
         {
             return await _context.TrilhasUsuarios.Where(tu => tu.IdUsuario == IdUsuario).ToListAsync();
