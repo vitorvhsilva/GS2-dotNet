@@ -7,9 +7,21 @@ namespace API.Application.Service
     public class ConteudoTrilhaUsuarioUseCase : IConteudoTrilhaUsuarioUseCase
     {
         private readonly IConteudoTrilhaUsuarioRepository _conteudoTrilhaUsuarioRepository;
-        public ConteudoTrilhaUsuarioUseCase(IConteudoTrilhaUsuarioRepository conteudoTrilhaUsuarioRepository)
+        private readonly ITrilhaUsuarioRepository _trilhaUsuarioRepository;
+        public ConteudoTrilhaUsuarioUseCase(IConteudoTrilhaUsuarioRepository conteudoTrilhaUsuarioRepository, ITrilhaUsuarioRepository trilhaUsuarioRepository)
         {
             _conteudoTrilhaUsuarioRepository = conteudoTrilhaUsuarioRepository;
+            _trilhaUsuarioRepository = trilhaUsuarioRepository;
+        }
+
+        public async Task ConcluirConteudoTrilhaUsuario(string IdUsuario, string IdTrilha,string IdConteudo)
+        {
+            await _conteudoTrilhaUsuarioRepository.ConcluirConteudoTrilhaUsuario(IdUsuario, IdConteudo);
+            var conteudosTrilha = await PegarTodasOsConteudosTrilhaUsuario(IdUsuario, IdTrilha);
+            if (!conteudosTrilha.Any(ct => ct.ConteudoTrilhaConcluidaUsuario == "N"))
+            {
+                await _trilhaUsuarioRepository.ConcluirTrilhaDoUsuario(IdUsuario, IdTrilha);
+            }
         }
 
         public async Task<ConteudoTrilhaUsuario> PegarConteudoTrilhaUsuario(string IdUsuario, string IdConteudo)

@@ -13,6 +13,14 @@ namespace API.Infraestructure.Data.Repositories
             _context = context;
         }
 
+        public async Task ConcluirConteudoTrilhaUsuario(string IdUsuario, string IdConteudo)
+        {
+            var conteudoTrilha = await _context.ConteudosTrilhaUsuario.FirstOrDefaultAsync(ct => ct.IdUsuario == IdUsuario && ct.IdConteudoTrilha == IdConteudo);
+            conteudoTrilha.ConteudoTrilhaConcluidaUsuario = "S";
+            _context.Update(conteudoTrilha);
+            await _context.SaveChangesAsync();
+        }
+
         public async Task<ConteudoTrilhaUsuario> PegarConteudoTrilhaUsuario(string IdUsuario, string IdConteudo)
         {
             return await _context.ConteudosTrilhaUsuario.FirstOrDefaultAsync(ct => ct.IdUsuario == IdUsuario && ct.IdConteudoTrilha == IdConteudo);

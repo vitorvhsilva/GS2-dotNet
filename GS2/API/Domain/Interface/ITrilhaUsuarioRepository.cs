@@ -5,5 +5,6 @@ namespace API.Domain.Interface
     public interface ITrilhaUsuarioRepository
     {
         public Task<IEnumerable<TrilhaUsuario>> PegarTrilhasDoUsuario(string IdUsuario);
+        public Task ConcluirTrilhaDoUsuario(string IdUsuario, string IdTrilha);
     }
 }

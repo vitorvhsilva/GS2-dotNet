@@ -71,5 +71,31 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Presentation.Controllers.ConteudoTrilhaUsuarioController",
+    "Method": "ConcluirConteudoTrilhaUsuario",
+    "RelativePath": "api/v1/usuarios/{IdUsuario}/trilhas/{IdTrilha}/conteudos/{IdConteudo}",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "IdUsuario",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "IdTrilha",
+        "Type": "System.String",
+        "IsRequired": true
+      },
+      {
+        "Name": "IdConteudo",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

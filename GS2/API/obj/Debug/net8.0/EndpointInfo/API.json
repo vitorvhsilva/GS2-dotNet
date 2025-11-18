@@ -71,6 +71,42 @@
             "description": "OK"
           }
         }
+      },
+      "patch": {
+        "tags": [
+          "ConteudoTrilhaUsuario"
+        ],
+        "parameters": [
+          {
+            "name": "IdUsuario",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "IdTrilha",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "IdConteudo",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
       }
     },
     "/api/v1/usuarios/{IdUsuario}/trilhas": {

@@ -6,5 +6,7 @@ namespace API.Domain.Interface
     {
         public Task<IEnumerable<ConteudoTrilhaUsuario>> PegarTodasOsConteudosTrilhaUsuario(string IdUsuario, string IdTrilha);
         public Task<ConteudoTrilhaUsuario> PegarConteudoTrilhaUsuario(string IdUsuario, string IdConteudo);
+
+        public Task ConcluirConteudoTrilhaUsuario(string IdUsuario, string IdConteudo);
     }
 }

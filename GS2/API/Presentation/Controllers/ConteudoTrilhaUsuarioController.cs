@@ -81,5 +81,17 @@ namespace API.Presentation.Controllers
 
             return Ok(response);
         }
+
+        [HttpPatch("{IdUsuario}/trilhas/{IdTrilha}/conteudos/{IdConteudo}")]
+        public async Task<IActionResult> ConcluirConteudoTrilhaUsuario(
+            string IdUsuario,
+            string IdTrilha,
+            string IdConteudo
+            )
+        {
+            await _conteudoTrilhaUsuarioUseCase.ConcluirConteudoTrilhaUsuario(IdUsuario, IdTrilha, IdConteudo);
+
+            return Ok();
+        }
     }
 }
