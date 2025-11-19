@@ -6,20 +6,58 @@ namespace API.Application.Service
 {
     public class ConteudoTrilhaUseCase : IConteudoTrilhaUseCase
     {
+        private readonly ILogger<ConteudoTrilhaUseCase> _logger;
         private readonly IConteudoTrilhaRepository _conteudoTrilhaRepository;
-        public ConteudoTrilhaUseCase(IConteudoTrilhaRepository conteudoTrilhaRepository)
+
+        public ConteudoTrilhaUseCase(
+            ILogger<ConteudoTrilhaUseCase> logger,
+            IConteudoTrilhaRepository conteudoTrilhaRepository)
         {
+            _logger = logger;
             _conteudoTrilhaRepository = conteudoTrilhaRepository;
         }
 
         public async Task<ConteudoTrilha> PegarConteudoTrilha(string IdConteudo)
         {
-            return await _conteudoTrilhaRepository.PegarConteudoTrilha(IdConteudo);
+            try
+            {
+                _logger.LogInformation("Obtendo conteúdo da trilha {IdConteudo}", IdConteudo);
+
+                var resultado = await _conteudoTrilhaRepository.PegarConteudoTrilha(IdConteudo);
+
+                if (resultado == null)
+                {
+                    _logger.LogWarning("Conteúdo da trilha {IdConteudo} não encontrado", IdConteudo);
+                }
+
+                return resultado;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex,
+                    "Erro ao obter o conteúdo da trilha {IdConteudo}. Detalhes: {Mensagem}",
+                    IdConteudo, ex.Message);
+
+                throw;
+            }
         }
 
         public async Task<IEnumerable<ConteudoTrilha>> PegarTodasOsConteudosTrilha(string IdTrilha)
         {
-            return await _conteudoTrilhaRepository.PegarTodasOsConteudosTrilha(IdTrilha);
+            try
+            {
+                _logger.LogInformation("Obtendo todos os conteúdos da trilha {IdTrilha}", IdTrilha);
+
+                return await _conteudoTrilhaRepository.PegarTodasOsConteudosTrilha(IdTrilha);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex,
+                    "Erro ao obter conteúdos da trilha {IdTrilha}. Detalhes: {Mensagem}",
+                    IdTrilha, ex.Message);
+
+                throw;
+            }
         }
     }
 }

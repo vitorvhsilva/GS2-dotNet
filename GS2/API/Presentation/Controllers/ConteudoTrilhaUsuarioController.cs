@@ -11,12 +11,18 @@ namespace API.Presentation.Controllers
     [ApiController]
     public class ConteudoTrilhaUsuarioController : ControllerBase
     {
+        private readonly ILogger<ConteudoTrilhaUsuarioController> _logger;
         private readonly IConteudoTrilhaUsuarioUseCase _conteudoTrilhaUsuarioUseCase;
         private readonly IConteudoTrilhaUseCase _conteudoTrilhaUseCase;
         private readonly ITrilhaUsuarioUseCase _trilhaUsuarioUseCase;
 
-        public ConteudoTrilhaUsuarioController(IConteudoTrilhaUsuarioUseCase conteudoTrilhaUsuarioUseCase, IConteudoTrilhaUseCase conteudoTrilhaUseCase, ITrilhaUsuarioUseCase trilhaUsuarioUseCase)
+        public ConteudoTrilhaUsuarioController(
+            ILogger<ConteudoTrilhaUsuarioController> logger,
+            IConteudoTrilhaUsuarioUseCase conteudoTrilhaUsuarioUseCase,
+            IConteudoTrilhaUseCase conteudoTrilhaUseCase,
+            ITrilhaUsuarioUseCase trilhaUsuarioUseCase)
         {
+            _logger = logger;
             _conteudoTrilhaUsuarioUseCase = conteudoTrilhaUsuarioUseCase;
             _conteudoTrilhaUseCase = conteudoTrilhaUseCase;
             _trilhaUsuarioUseCase = trilhaUsuarioUseCase;
@@ -27,37 +33,64 @@ namespace API.Presentation.Controllers
             string IdUsuario,
             string IdTrilha)
         {
-            var conteudosTrilhaUsuario = await _conteudoTrilhaUsuarioUseCase.PegarTodasOsConteudosTrilhaUsuario(IdUsuario, IdTrilha);
-            var conteudosTrilha = await _conteudoTrilhaUseCase.PegarTodasOsConteudosTrilha(IdTrilha);
-
-            var conteudosTrilhasDict = conteudosTrilha.ToDictionary(ct => ct.IdConteudoTrilha, ct => ct);
-
-            var conteudoTrilhasCompletas = new List<ConteudoTrilhaUsuarioCompleta>();
-
-            foreach (var ctu in conteudosTrilhaUsuario)
+            try
             {
-                if (conteudosTrilhasDict.TryGetValue(ctu.IdConteudoTrilha, out var conteudoTrilha))
+                _logger.LogInformation(
+                    "Iniciando busca dos conteúdos da trilha {TrilhaId} do usuário {UsuarioId}",
+                    IdTrilha, IdUsuario
+                );
+
+                var conteudosTrilhaUsuario = await _conteudoTrilhaUsuarioUseCase
+                    .PegarTodasOsConteudosTrilhaUsuario(IdUsuario, IdTrilha);
+
+                var conteudosTrilha = await _conteudoTrilhaUseCase
+                    .PegarTodasOsConteudosTrilha(IdTrilha);
+
+                var conteudosTrilhasDict = conteudosTrilha
+                    .ToDictionary(ct => ct.IdConteudoTrilha, ct => ct);
+
+                var conteudoTrilhasCompletas = new List<ConteudoTrilhaUsuarioCompleta>();
+
+                foreach (var ctu in conteudosTrilhaUsuario)
                 {
-                    conteudoTrilhasCompletas.Add(new ConteudoTrilhaUsuarioCompleta(
-                        ctu.IdConteudoTrilha,
-                        conteudoTrilha.NomeConteudoTrilha,
-                        conteudoTrilha.TipoConteudoTrilha,
-                        StringUtil.boolean(ctu.ConteudoTrilhaConcluidaUsuario)
-                    ));
+                    if (conteudosTrilhasDict.TryGetValue(ctu.IdConteudoTrilha, out var conteudoTrilha))
+                    {
+                        conteudoTrilhasCompletas.Add(new ConteudoTrilhaUsuarioCompleta(
+                            ctu.IdConteudoTrilha,
+                            conteudoTrilha.NomeConteudoTrilha,
+                            conteudoTrilha.TipoConteudoTrilha,
+                            StringUtil.boolean(ctu.ConteudoTrilhaConcluidaUsuario)
+                        ));
+                    }
                 }
+
+                var trilha = await _trilhaUsuarioUseCase
+                    .PegarTrilhaDoUsuario(IdUsuario, IdTrilha);
+
+                _logger.LogInformation(
+                    "Conteúdos da trilha {TrilhaId} para o usuário {UsuarioId} obtidos com sucesso",
+                    IdTrilha, IdUsuario
+                );
+
+                return Ok(new
+                {
+                    data = new
+                    {
+                        trilhaConcluida = StringUtil.boolean(trilha.TrilhaConcluidaUsuario),
+                        conteudos = conteudoTrilhasCompletas
+                    }
+                });
             }
-
-            var trilha = await _trilhaUsuarioUseCase.PegarTrilhaDoUsuario(IdUsuario, IdTrilha);
-
-            var response = new
+            catch (Exception ex)
             {
-                data = new {
-                    trilhaConcluida = StringUtil.boolean(trilha.TrilhaConcluidaUsuario),
-                    conteudos = conteudoTrilhasCompletas
-                }
-            };
+                _logger.LogError(
+                    ex,
+                    "Erro ao obter conteúdos da trilha {TrilhaId} para o usuário {UsuarioId}",
+                    IdTrilha, IdUsuario
+                );
 
-            return Ok(response);
+                return BadRequest();
+            }
         }
 
         [HttpGet("{IdUsuario}/trilhas/{IdTrilha}/conteudos/{IdConteudo}")]
@@ -67,62 +100,95 @@ namespace API.Presentation.Controllers
             string IdConteudo
         )
         {
-            var conteudoTrilhaUsuario = await _conteudoTrilhaUsuarioUseCase.PegarConteudoTrilhaUsuario(IdUsuario, IdConteudo);
-            var conteudoTrilha = await _conteudoTrilhaUseCase.PegarConteudoTrilha(IdConteudo);
-
-            if (conteudoTrilha == null || conteudoTrilhaUsuario == null)
+            try
             {
-                return NotFound();
-            }
+                _logger.LogInformation(
+                    "Buscando conteúdo {ConteudoId} da trilha {TrilhaId} para o usuário {UsuarioId}",
+                    IdConteudo, IdTrilha, IdUsuario
+                );
 
-            var conteudosTrilha = await _conteudoTrilhaUseCase.PegarTodasOsConteudosTrilha(IdTrilha);
-            var listaOrdenada = conteudosTrilha.OrderBy(c => c.IdConteudoTrilha).ToList();
+                var conteudoTrilhaUsuario = await _conteudoTrilhaUsuarioUseCase
+                    .PegarConteudoTrilhaUsuario(IdUsuario, IdConteudo);
 
-            int indexAtual = listaOrdenada.FindIndex(c => c.IdConteudoTrilha == IdConteudo);
+                var conteudoTrilha = await _conteudoTrilhaUseCase
+                    .PegarConteudoTrilha(IdConteudo);
 
-            string linkNext =
-                indexAtual >= 0 && indexAtual < listaOrdenada.Count - 1
-                    ? Url.Action(nameof(PegarConteudoTrilhaUsuario),
-                        new { IdUsuario, IdTrilha, IdConteudo = listaOrdenada[indexAtual + 1].IdConteudoTrilha })
-                    : null;
+                if (conteudoTrilha == null || conteudoTrilhaUsuario == null)
+                {
+                    _logger.LogWarning(
+                        "Conteúdo {ConteudoId} não encontrado para o usuário {UsuarioId} na trilha {TrilhaId}",
+                        IdConteudo, IdUsuario, IdTrilha
+                    );
 
-            string linkPrev =
-                indexAtual > 0
-                    ? Url.Action(nameof(PegarConteudoTrilhaUsuario),
-                        new { IdUsuario, IdTrilha, IdConteudo = listaOrdenada[indexAtual - 1].IdConteudoTrilha })
-                    : null;
+                    return NotFound();
+                }
 
-            var data = new ConteudoTrilhaCompleta(
-                conteudoTrilha.IdConteudoTrilha,
-                conteudoTrilha.NomeConteudoTrilha,
-                conteudoTrilha.TipoConteudoTrilha,
-                conteudoTrilha.TextoConteudoTrilha,
-                StringUtil.boolean(conteudoTrilhaUsuario.ConteudoTrilhaConcluidaUsuario)
-            );
+                var conteudosTrilha = await _conteudoTrilhaUseCase
+                    .PegarTodasOsConteudosTrilha(IdTrilha);
 
-            var response = new HateoasResponse<ConteudoTrilhaCompleta>(data);
+                var listaOrdenada = conteudosTrilha.OrderBy(c => c.IdConteudoTrilha).ToList();
+                int indexAtual = listaOrdenada.FindIndex(c => c.IdConteudoTrilha == IdConteudo);
 
-            response.AddLink("self",
-                Url.Action(nameof(PegarConteudoTrilhaUsuario), new { IdUsuario, IdTrilha, IdConteudo }),
-                "GET");
+                string linkNext =
+                    indexAtual >= 0 && indexAtual < listaOrdenada.Count - 1
+                        ? Url.Action(nameof(PegarConteudoTrilhaUsuario),
+                            new { IdUsuario, IdTrilha, IdConteudo = listaOrdenada[indexAtual + 1].IdConteudoTrilha })
+                        : null;
 
-            response.AddLink("listarConteudos",
-                Url.Action("PegarTodasOsConteudosTrilhaUsuario", "ConteudoTrilhaUsuario",
-                    new { IdUsuario, IdTrilha }),
-                "GET");
+                string linkPrev =
+                    indexAtual > 0
+                        ? Url.Action(nameof(PegarConteudoTrilhaUsuario),
+                            new { IdUsuario, IdTrilha, IdConteudo = listaOrdenada[indexAtual - 1].IdConteudoTrilha })
+                        : null;
 
-            if (!StringUtil.boolean(conteudoTrilhaUsuario.ConteudoTrilhaConcluidaUsuario))
-            {
-                response.AddLink("concluirConteudo",
-                    Url.Action(nameof(ConcluirConteudoTrilhaUsuario),
+                var data = new ConteudoTrilhaCompleta(
+                    conteudoTrilha.IdConteudoTrilha,
+                    conteudoTrilha.NomeConteudoTrilha,
+                    conteudoTrilha.TipoConteudoTrilha,
+                    conteudoTrilha.TextoConteudoTrilha,
+                    StringUtil.boolean(conteudoTrilhaUsuario.ConteudoTrilhaConcluidaUsuario)
+                );
+
+                var response = new HateoasResponse<ConteudoTrilhaCompleta>(data);
+
+                response.AddLink("self",
+                    Url.Action(nameof(PegarConteudoTrilhaUsuario),
                         new { IdUsuario, IdTrilha, IdConteudo }),
-                    "PATCH");
+                    "GET");
+
+                response.AddLink("listarConteudos",
+                    Url.Action("PegarTodasOsConteudosTrilhaUsuario", "ConteudoTrilhaUsuario",
+                        new { IdUsuario, IdTrilha }),
+                    "GET");
+
+                if (!StringUtil.boolean(conteudoTrilhaUsuario.ConteudoTrilhaConcluidaUsuario))
+                {
+                    response.AddLink("concluirConteudo",
+                        Url.Action(nameof(ConcluirConteudoTrilhaUsuario),
+                            new { IdUsuario, IdTrilha, IdConteudo }),
+                        "PATCH");
+                }
+
+                response.AddLink("proximo", linkNext, "GET");
+                response.AddLink("anterior", linkPrev, "GET");
+
+                _logger.LogInformation(
+                    "Conteúdo {ConteudoId} da trilha {TrilhaId} retornado com sucesso para o usuário {UsuarioId}",
+                    IdConteudo, IdTrilha, IdUsuario
+                );
+
+                return Ok(response);
             }
+            catch (Exception ex)
+            {
+                _logger.LogError(
+                    ex,
+                    "Erro ao obter conteúdo {ConteudoId} da trilha {TrilhaId} para o usuário {UsuarioId}",
+                    IdConteudo, IdTrilha, IdUsuario
+                );
 
-            response.AddLink("proximo", linkNext, "GET");
-            response.AddLink("anterior", linkPrev, "GET");
-
-            return Ok(response);
+                return BadRequest();
+            }
         }
 
         [HttpPatch("{IdUsuario}/trilhas/{IdTrilha}/conteudos/{IdConteudo}")]
@@ -130,11 +196,35 @@ namespace API.Presentation.Controllers
             string IdUsuario,
             string IdTrilha,
             string IdConteudo
-            )
+        )
         {
-            await _conteudoTrilhaUsuarioUseCase.ConcluirConteudoTrilhaUsuario(IdUsuario, IdTrilha, IdConteudo);
+            try
+            {
+                _logger.LogInformation(
+                    "Tentando concluir conteúdo {ConteudoId} da trilha {TrilhaId} para o usuário {UsuarioId}",
+                    IdConteudo, IdTrilha, IdUsuario
+                );
 
-            return Ok();
+                await _conteudoTrilhaUsuarioUseCase
+                    .ConcluirConteudoTrilhaUsuario(IdUsuario, IdTrilha, IdConteudo);
+
+                _logger.LogInformation(
+                    "Conteúdo {ConteudoId} concluído com sucesso pelo usuário {UsuarioId}",
+                    IdConteudo, IdUsuario
+                );
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(
+                    ex,
+                    "Erro ao concluir conteúdo {ConteudoId} da trilha {TrilhaId} para o usuário {UsuarioId}",
+                    IdConteudo, IdTrilha, IdUsuario
+                );
+
+                return BadRequest();
+            }
         }
     }
 }
