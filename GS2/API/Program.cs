@@ -3,6 +3,7 @@ using API.Application.Service;
 using API.Domain.Interface;
 using API.Infraestructure.Data.AppData;
 using API.Infraestructure.Data.Repositories;
+using API.Presentation.Security;
 using Asp.Versioning;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.EntityFrameworkCore;
@@ -92,6 +93,7 @@ app.MapHealthChecks("/health", new HealthCheckOptions
 
 app.UseCors("AllowAll");
 app.UseHttpsRedirection();
+app.UseMiddleware<ApiKeyMiddleware>();
 app.UseAuthorization();
 app.MapControllers();
 app.Run();
