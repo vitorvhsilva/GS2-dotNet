@@ -14,14 +14,14 @@ RUN dotnet publish "API/API.csproj" -c Release -o /app/publish
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 
-ENV ASPNETCORE_URLS=http://+:7050 \
+ENV ASPNETCORE_URLS=http://+:7162 \
     DOTNET_RUNNING_IN_CONTAINER=true \
     ASPNETCORE_ENVIRONMENT=Development
 
 COPY --from=build /app/publish .
 
 # porta api
-EXPOSE 7050
+EXPOSE 7162
 
 # comando init
 ENTRYPOINT ["dotnet", "API.dll"]
