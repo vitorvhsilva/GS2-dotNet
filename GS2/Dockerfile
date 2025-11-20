@@ -2,13 +2,13 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
-COPY ["Motos/Motos.csproj", "Motos/"]
-RUN dotnet restore "Motos/Motos.csproj"
+COPY ["API/API.csproj", "API/"]
+RUN dotnet restore "API/API.csproj"
 
 COPY . .
 
 # publicar dependencias
-RUN dotnet publish "Motos/Motos.csproj" -c Release -o /app/publish 
+RUN dotnet publish "API/API.csproj" -c Release -o /app/publish 
 
 # runtime
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
@@ -24,4 +24,4 @@ COPY --from=build /app/publish .
 EXPOSE 7050
 
 # comando init
-ENTRYPOINT ["dotnet", "Motos.dll"]
+ENTRYPOINT ["dotnet", "API.dll"]
