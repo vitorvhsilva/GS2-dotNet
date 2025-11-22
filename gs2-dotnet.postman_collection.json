@@ -1,0 +1,195 @@
+{
+	"info": {
+		"_postman_id": "dfc9585b-75f4-45d6-89ef-9734ccfd6a49",
+		"name": "gs2-dotnet",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34543089"
+	},
+	"item": [
+		{
+			"name": "get trilhas usuario",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "93592d64-940e-4ee7-b7b1-4e9e1792d755",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/api/v1/usuarios/5e5fc7b4-863d-4e8a-b0bb-c93a4360f972/trilhas?Pagina=1",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"usuarios",
+						"5e5fc7b4-863d-4e8a-b0bb-c93a4360f972",
+						"trilhas"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						},
+						{
+							"key": "Pagina",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get trilha usuario",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "93592d64-940e-4ee7-b7b1-4e9e1792d755",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/api/v1/usuarios/5e5fc7b4-863d-4e8a-b0bb-c93a4360f972/trilhas/f45b7fa3-52e5-455c-80be-68b52ca90212",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"usuarios",
+						"5e5fc7b4-863d-4e8a-b0bb-c93a4360f972",
+						"trilhas",
+						"f45b7fa3-52e5-455c-80be-68b52ca90212"
+					],
+					"query": [
+						{
+							"key": "x-ai",
+							"value": "93592d64-940e-4ee7-b7b1-4e9e1792d755",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get conteudo trilhas usuario",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "93592d64-940e-4ee7-b7b1-4e9e1792d755",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/api/v1/usuarios/5e5fc7b4-863d-4e8a-b0bb-c93a4360f972/trilhas/f45b7fa3-52e5-455c-80be-68b52ca90212/conteudos",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"usuarios",
+						"5e5fc7b4-863d-4e8a-b0bb-c93a4360f972",
+						"trilhas",
+						"f45b7fa3-52e5-455c-80be-68b52ca90212",
+						"conteudos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get conteudo trilha usuario",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "93592d64-940e-4ee7-b7b1-4e9e1792d755",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/api/v1/usuarios/5e5fc7b4-863d-4e8a-b0bb-c93a4360f972/trilhas/f45b7fa3-52e5-455c-80be-68b52ca90212/conteudos/2c3d4e5f-5678-879a-b495-3f4a5b6c7d87",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"usuarios",
+						"5e5fc7b4-863d-4e8a-b0bb-c93a4360f972",
+						"trilhas",
+						"f45b7fa3-52e5-455c-80be-68b52ca90212",
+						"conteudos",
+						"2c3d4e5f-5678-879a-b495-3f4a5b6c7d87"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "visualizar conteudo trilha usuario",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "93592d64-940e-4ee7-b7b1-4e9e1792d755",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/api/v1/usuarios/5e5fc7b4-863d-4e8a-b0bb-c93a4360f972/trilhas/f45b7fa3-52e5-455c-80be-68b52ca90212/conteudos/3d4e5f60-6789-98ab-c5a6-4a5b6c7d8e98",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"usuarios",
+						"5e5fc7b4-863d-4e8a-b0bb-c93a4360f972",
+						"trilhas",
+						"f45b7fa3-52e5-455c-80be-68b52ca90212",
+						"conteudos",
+						"3d4e5f60-6789-98ab-c5a6-4a5b6c7d8e98"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "health",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-api-key",
+						"value": "93592d64-940e-4ee7-b7b1-4e9e1792d755",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/health",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

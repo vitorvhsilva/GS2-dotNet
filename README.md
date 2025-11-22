@@ -1,6 +1,16 @@
 # API de Trilhas de Aprendizado
 
 > API REST .NET 8 para gerenciar trilhas de aprendizado, conteúdos e progresso de usuários.
+
+### Testes (Postman)
+
+A collection Postman `gs2-dotnet.postman_collection.json` contém todos os testes de integração da API com requisições HTTP reais.
+
+**URLs Disponíveis:**
+- **Local:** `https://localhost:7162`
+- **Produção:** `https://gs2-dotnet.onrender.com`
+
+
 ## 🏗️ Arquitetura
 
 ```
@@ -172,22 +182,22 @@ cd GS2/
 dotnet run
 ```
 
-API disponível em: `https://localhost:7000`
+API disponível em: `https://localhost:7162`
 
 ## 📝 Endpoints Principais
 
 ```bash
 # Health Check
-curl http://localhost:7000/health
+curl https://localhost:7162/health
 
 # Listar trilhas (paginado)
-curl "http://localhost:7000/api/v1/usuarios/user-123/trilhas?Pagina=1&Tamanho=5"
+curl "https://localhost:7162/api/v1/usuarios/user-123/trilhas?Pagina=1&Tamanho=5"
 
 # Obter trilha específica (com HATEOAS)
-curl http://localhost:7000/api/v1/usuarios/user-123/trilhas/trilha-1
+curl https://localhost:7162/api/v1/usuarios/user-123/trilhas/trilha-1
 
 # Concluir conteúdo
-curl -X PATCH http://localhost:7000/api/v1/usuarios/user-123/trilhas/trilha-1/conteudos/conteudo-1
+curl -X PATCH https://localhost:7162/api/v1/usuarios/user-123/trilhas/trilha-1/conteudos/conteudo-1
 ```
 
 ## 📂 Estrutura de Arquivos
@@ -214,6 +224,8 @@ GS2/
 
 **Status:** ✅ 53+ testes passando (100% cobertura)
 
+### Testes Unitários (C#)
+
 **Estrutura:**
 - Use Cases: Testes com Moq
 - Repositories: Testes com In-Memory DB
@@ -231,6 +243,12 @@ dotnet test Tests/UnitTests/Presentation
 # Rodar um teste específico
 dotnet test --filter "Deve retornar trilha por ID"
 ```
+
+**Como Executar:**
+1. Abra o Postman
+2. Importe a collection `gs2-dotnet.postman_collection.json`
+3. Configure a variável `baseURL` com a URL desejada
+4. Execute as requisições para testar todos os endpoints
 
 ## 🔒 Segurança
 
@@ -257,14 +275,6 @@ Response (com HATEOAS + paginação)
     ↓
 HTTP Response
 ```
-
-## 📚 Documentação
-
-- **README.md** - Este arquivo
-- **DOCUMENTACAO_TECNICA.md** - Detalhes técnicos completos
-- **QUICKSTART.md** - Guia rápido (5 minutos)
-- **CHECKLIST_FINAL.md** - Checklist de todos os requisitos
-- **Tests/TESTES_README.md** - Documentação de testes
 
 ## ✅ Checklist de Requisitos
 
