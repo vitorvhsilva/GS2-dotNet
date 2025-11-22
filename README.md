@@ -2,6 +2,16 @@
 
 > API REST .NET 8 para gerenciar trilhas de aprendizado, conteúdos e progresso de usuários.
 
+## Integrantes 
+
+### Brendon de Paula- RM559196
+### João Gananca - RM556405
+### Vitor Hugo - RM558961
+
+
+## Pontos Importantes 
+> Caso haja alguma dificuldade para acessar ou testar a API, por favor me chame no privado (Vitor Hugo - RM558961)
+
 ## 🚀 Como Executar
 
 ### 1. Pré-requisitos
@@ -18,8 +28,7 @@ cd GS2/
 ```
 
 ### 3. Banco de Dados
-#### Rodar Script SQL presente na raiz do projeto: GS2.sql
-
+#### Rodar Script SQL presente na raiz do projeto: GS2.sql no seu acesso Oracle
 
 ### 4. Executar API
 ```bash
