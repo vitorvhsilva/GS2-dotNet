@@ -4,9 +4,9 @@
 
 ## Integrantes 
 
-### Brendon de Paula- RM559196
-### João Gananca - RM556405
-### Vitor Hugo - RM558961
+#### Brendon de Paula- RM559196
+#### João Gananca - RM556405
+#### Vitor Hugo - RM558961
 
 
 ## Pontos Importantes 
