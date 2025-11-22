@@ -12,7 +12,7 @@
 ## Pontos Importantes 
 > Caso haja alguma dificuldade para acessar ou testar a API, por favor me chame no privado (Vitor Hugo - RM558961)
 
-## 🚀 Como Executar
+## Como Executar
 
 ### 1. Pré-requisitos
 - .NET 8 SDK
@@ -46,7 +46,7 @@ A collection Postman `gs2-dotnet.postman_collection.json` contém todos os teste
 - **Produção:** `https://gs2-dotnet.onrender.com`
 
 
-## 🏗️ Arquitetura
+## Arquitetura
 
 ```
 API/
@@ -61,9 +61,9 @@ Tests/
 📁 Presentation/      13 testes de Controller
 ```
 
-## ✅ Funcionalidades Implementadas
+## Funcionalidades Implementadas
 
-### 1. Boas Práticas REST (30 pts)
+### 1. Boas Práticas REST
 
 **Verbos HTTP:**
 ```
@@ -104,7 +104,7 @@ PATCH  /api/v1/usuarios/{id}/trilhas/{id}/conteudos/{id}         → Concluir co
 - `400 Bad Request` - Erro na requisição
 - `500 Internal Server Error` - Erro no servidor
 
-### 2. Monitoramento e Observabilidade (15 pts)
+### 2. Monitoramento e Observabilidade
 
 **Health Check:**
 ```bash
@@ -122,7 +122,7 @@ _logger.LogError(ex, "Erro ao buscar trilha");
 
 **Tracing:** Cada operação é rastreada via logs contextualizados do início ao fim.
 
-### 3. Versionamento da API (10 pts)
+### 3. Versionamento da API
 
 **Estrutura:**
 ```
@@ -135,7 +135,7 @@ _logger.LogError(ex, "Erro ao buscar trilha");
 - Via Header: `x-api-version: 1.0`
 - Via Query: `?api-version=1.0`
 
-### 4. Integração e Persistência (30 pts)
+### 4. Integração e Persistência
 
 **Banco de Dados:** Oracle com EF Core
 
@@ -162,7 +162,7 @@ public interface ITrilhaRepository
 builder.Services.AddTransient<ITrilhaRepository, TrilhaRepository>();
 ```
 
-### 5. Testes Integrados (15 pts)
+### 5. Testes Integrados
 
 **53+ Testes Automatizados:**
 - 18 testes de Use Case
@@ -193,7 +193,7 @@ dotnet test
 dotnet test --filter "DisplayName=Deve retornar trilha"
 ```
 
-## 📝 Endpoints Principais
+## Endpoints Principais
 
 ```bash
 # Health Check
@@ -209,27 +209,7 @@ curl https://localhost:7162/api/v1/usuarios/user-123/trilhas/trilha-1
 curl -X PATCH https://localhost:7162/api/v1/usuarios/user-123/trilhas/trilha-1/conteudos/conteudo-1
 ```
 
-## 📂 Estrutura de Arquivos
-
-```
-GS2/
-📁 API/                          Projeto principal
-│   📁 Presentation/             Controllers + DTOs
-│   📁 Application/              Use Cases
-│   📁 Domain/                   Entidades + Interfaces
-│   📁 Infrastructure/           Repositories + DbContext
-│   📄 Program.cs                Configurações
-│   📄 appsettings.json          Connection string
-│
-📁 Tests/                        Testes unitários
-│   📁 UnitTests/Application/    18 testes
-│   📁 UnitTests/Infrastructure/ 22 testes
-│   📁 UnitTests/Presentation/   13 testes
-│
-📄 README.md                     (este arquivo)
-```
-
-## ✔️ Testes
+## Testes
 
 **Status:** ✅ 53+ testes passando (100% cobertura)
 
@@ -259,7 +239,7 @@ dotnet test --filter "Deve retornar trilha por ID"
 3. Configure a variável `baseURL` com a URL desejada
 4. Execute as requisições para testar todos os endpoints
 
-## 🔒 Segurança
+## Segurança
 
 - ✅ Validação de input
 - ✅ Tratamento de exceções
@@ -267,7 +247,7 @@ dotnet test --filter "Deve retornar trilha por ID"
 - ✅ CORS configurado
 - ✅ Logs de auditoria
 
-## 📊 Diagrama de Fluxo
+## Diagrama de Fluxo
 
 ```
 HTTP Request
@@ -284,17 +264,6 @@ Response (com HATEOAS + paginação)
     ↓
 HTTP Response
 ```
-
-## ✅ Checklist de Requisitos
-
-| Requisito | Pontos | Status |
-|-----------|--------|--------|
-| Boas Práticas REST | 30 | ✅ |
-| Monitoramento | 15 | ✅ |
-| Versionamento | 10 | ✅ |
-| Persistência | 30 | ✅ |
-| Testes | 15 | ✅ |
-| **TOTAL** | **100** | ✅ |
 
 ## 🛠️ Stack Tecnológico
 
