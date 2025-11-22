@@ -295,7 +295,7 @@ declare
     v_u10 varchar2(36) := 'c82ae200-0df6-4f6c-887a-a69e502435f8';
 begin
     pkg_inserts.inserir_usuario(v_u1,  'Ana Silva',         'ana@email.com',     'senha1',  systimestamp);
-    pkg_inserts.inserir_usuario(v_u2,  'João Prado',        'joao@email.com',    'senha2',  systimestamp);
+    pkg_inserts.inserir_usuario(v_u2,  'JoÃ£o Prado',        'joao@email.com',    'senha2',  systimestamp);
     pkg_inserts.inserir_usuario(v_u3,  'Marina Costa',      'marina@email.com',  'senha3',  systimestamp);
     pkg_inserts.inserir_usuario(v_u4,  'Pedro Gomes',       'pedro@email.com',   'senha4',  systimestamp);
     pkg_inserts.inserir_usuario(v_u5,  'Carla Melo',        'carla@email.com',   'senha5',  systimestamp);
@@ -319,16 +319,16 @@ declare
     t9  varchar2(36) := 'b337644e-eb7d-44b4-8c31-77ef4d9a9032';
     t10 varchar2(36) := 'dcc7cd01-414b-4a4f-bf6b-4bc62e56b7cb';
 begin
-    pkg_inserts.inserir_trilha(t1,  'Introdução ao Futuro do Trabalho', 3);
-    pkg_inserts.inserir_trilha(t2,  'Inteligência Artificial Aplicada', 3);
+    pkg_inserts.inserir_trilha(t1,  'IntroduÃ§Ã£o ao Futuro do Trabalho', 3);
+    pkg_inserts.inserir_trilha(t2,  'InteligÃªncia Artificial Aplicada', 3);
     pkg_inserts.inserir_trilha(t3,  'Habilidades Digitais Essenciais', 3);
     pkg_inserts.inserir_trilha(t4,  'Carreira em Tecnologia', 2);
     pkg_inserts.inserir_trilha(t5,  'Empreendedorismo Moderno', 2);
-    pkg_inserts.inserir_trilha(t6,  'Produtividade e Organização', 2);
+    pkg_inserts.inserir_trilha(t6,  'Produtividade e OrganizaÃ§Ã£o', 2);
     pkg_inserts.inserir_trilha(t7,  'Soft Skills do Futuro', 3);
     pkg_inserts.inserir_trilha(t8,  'Dados e Analytics', 2);
-    pkg_inserts.inserir_trilha(t9,  'Criatividade e Inovação', 2);
-    pkg_inserts.inserir_trilha(t10, 'Liderança e Gestão', 3);
+    pkg_inserts.inserir_trilha(t9,  'Criatividade e InovaÃ§Ã£o', 2);
+    pkg_inserts.inserir_trilha(t10, 'LideranÃ§a e GestÃ£o', 3);
 end;
 /
 
@@ -346,29 +346,29 @@ declare
 begin
     pkg_inserts.inserir_conteudo_trilha(
         '9a7f2d1b-3c2a-4b9f-8a47-1e0c5d2a9f11',
-        'Tendências e Contexto',
-        'Vídeo',
-        'https://videos.com/contexto123',
+        'TendÃªncias e Contexto',
+        'VÃ­deo',
+        'https://www.youtube.com/watch?v=Lbk-EDaySmw',
         t1
     );
     pkg_inserts.inserir_conteudo_trilha(
         '2b8c6e3d-7f1a-4d2b-ab12-3f8a6d4c2b22',
         'Habilidades Essenciais',
         'Artigo',
-        'No cenário profissional contemporâneo, onde mudanças acontecem em ritmo acelerado e novas tecnologias surgem a todo momento, desenvolver habilidades essenciais deixou de ser apenas uma vantagem competitiva — tornou-se um requisito fundamental para qualquer pessoa que deseja se manter relevante no mercado de trabalho. Essas habilidades, que combinam competências técnicas e comportamentais, formam a base para que profissionais possam se adaptar, inovar e assumir papéis cada vez mais estratégicos dentro das organizações.
+        'No cenÃ¡rio profissional contemporÃ¢neo, onde mudanÃ§as acontecem em ritmo acelerado e novas tecnologias surgem a todo momento, desenvolver habilidades essenciais deixou de ser apenas uma vantagem competitiva â€” tornou-se um requisito fundamental para qualquer pessoa que deseja se manter relevante no mercado de trabalho. Essas habilidades, que combinam competÃªncias tÃ©cnicas e comportamentais, formam a base para que profissionais possam se adaptar, inovar e assumir papÃ©is cada vez mais estratÃ©gicos dentro das organizaÃ§Ãµes.
 
-        Entre as habilidades técnicas mais valorizadas atualmente, destacam-se a capacidade de analisar dados, compreender fluxos digitais e utilizar ferramentas de automação para otimizar processos. Com a crescente presença da inteligência artificial em diferentes setores, entender conceitos básicos de aprendizado de máquina, análise preditiva e integrações tecnológicas também se tornou um diferencial significativo. No entanto, tão importante quanto saber operar novas ferramentas é a habilidade de aprender continuamente, mantendo-se atualizado e apto a lidar com mudanças constantes.
+        Entre as habilidades tÃ©cnicas mais valorizadas atualmente, destacam-se a capacidade de analisar dados, compreender fluxos digitais e utilizar ferramentas de automaÃ§Ã£o para otimizar processos. Com a crescente presenÃ§a da inteligÃªncia artificial em diferentes setores, entender conceitos bÃ¡sicos de aprendizado de mÃ¡quina, anÃ¡lise preditiva e integraÃ§Ãµes tecnolÃ³gicas tambÃ©m se tornou um diferencial significativo. No entanto, tÃ£o importante quanto saber operar novas ferramentas Ã© a habilidade de aprender continuamente, mantendo-se atualizado e apto a lidar com mudanÃ§as constantes.
 
-        Do ponto de vista comportamental, habilidades como pensamento crítico, comunicação clara e colaboração eficaz são indispensáveis. Profissionais que conseguem avaliar situações de forma analítica, propor soluções criativas e trabalhar de maneira integrada com equipes diversas tendem a liderar transformações e agregar mais valor às empresas. Além disso, a inteligência emocional tem ganhado destaque, permitindo que indivíduos lidem com pressão, adaptem-se a contextos incertos e cultivem relações saudáveis no ambiente de trabalho.
+        Do ponto de vista comportamental, habilidades como pensamento crÃ­tico, comunicaÃ§Ã£o clara e colaboraÃ§Ã£o eficaz sÃ£o indispensÃ¡veis. Profissionais que conseguem avaliar situaÃ§Ãµes de forma analÃ­tica, propor soluÃ§Ãµes criativas e trabalhar de maneira integrada com equipes diversas tendem a liderar transformaÃ§Ãµes e agregar mais valor Ã s empresas. AlÃ©m disso, a inteligÃªncia emocional tem ganhado destaque, permitindo que indivÃ­duos lidem com pressÃ£o, adaptem-se a contextos incertos e cultivem relaÃ§Ãµes saudÃ¡veis no ambiente de trabalho.
 
-        Por fim, a combinação equilibrada entre habilidades técnicas e comportamentais cria um perfil profissional completo, preparado para atuar em um mundo cada vez mais digital, dinâmico e orientado por dados. Investir no desenvolvimento dessas competências não é apenas uma preparação para o futuro — é uma estratégia essencial para construir uma carreira sólida, resiliente e alinhada às demandas do mercado moderno.',
+        Por fim, a combinaÃ§Ã£o equilibrada entre habilidades tÃ©cnicas e comportamentais cria um perfil profissional completo, preparado para atuar em um mundo cada vez mais digital, dinÃ¢mico e orientado por dados. Investir no desenvolvimento dessas competÃªncias nÃ£o Ã© apenas uma preparaÃ§Ã£o para o futuro â€” Ã© uma estratÃ©gia essencial para construir uma carreira sÃ³lida, resiliente e alinhada Ã s demandas do mercado moderno.',
         t1
     );
     pkg_inserts.inserir_conteudo_trilha(
         '4c3d9f5e-1a2b-43c4-bd55-6a9e7f8b3c33',
-        'Preparação Prática',
-        'Vídeo',
-        'https://videos.com/preparacao456',
+        'PreparaÃ§Ã£o PrÃ¡tica',
+        'VÃ­deo',
+        'https://www.youtube.com/watch?v=7wG134Mby8c',
         t1
     );
 
@@ -376,63 +376,63 @@ begin
         '5d4e8a6f-2b3c-4f1a-9c22-7b8d6e5f4a44',
         'Fundamentos de IA',
         'Artigo',
-        'A Inteligência Artificial (IA) tornou-se um dos pilares tecnológicos mais influentes da era digital, moldando a maneira como empresas, governos e indivíduos interagem com dados, sistemas e processos automatizados. Compreender seus fundamentos é essencial para qualquer pessoa que deseja atuar em um mercado cada vez mais orientado por algoritmos e decisões automatizadas. No nível conceitual, a IA pode ser entendida como a capacidade de máquinas executarem tarefas que tradicionalmente exigiriam inteligência humana, como reconhecer padrões, tomar decisões, aprender com experiências e até mesmo compreender linguagem natural.
+        'A InteligÃªncia Artificial (IA) tornou-se um dos pilares tecnolÃ³gicos mais influentes da era digital, moldando a maneira como empresas, governos e indivÃ­duos interagem com dados, sistemas e processos automatizados. Compreender seus fundamentos Ã© essencial para qualquer pessoa que deseja atuar em um mercado cada vez mais orientado por algoritmos e decisÃµes automatizadas. No nÃ­vel conceitual, a IA pode ser entendida como a capacidade de mÃ¡quinas executarem tarefas que tradicionalmente exigiriam inteligÃªncia humana, como reconhecer padrÃµes, tomar decisÃµes, aprender com experiÃªncias e atÃ© mesmo compreender linguagem natural.
 
-        Entre os principais componentes da IA, destacam-se as redes neurais artificiais, inspiradas no funcionamento do cérebro humano. Essas redes são compostas por camadas de “neurônios” capazes de aprender relações complexas entre dados, permitindo que modelos identifiquem padrões que dificilmente seriam percebidos por métodos tradicionais. Outro conceito essencial é a regressão, utilizada para prever valores numéricos a partir de um conjunto de variáveis. Já os algoritmos de classificação permitem categorizar dados em grupos distintos, sendo amplamente utilizados em áreas como detecção de fraudes, diagnósticos médicos e análise de imagens.
+        Entre os principais componentes da IA, destacam-se as redes neurais artificiais, inspiradas no funcionamento do cÃ©rebro humano. Essas redes sÃ£o compostas por camadas de â€œneurÃ´niosâ€ capazes de aprender relaÃ§Ãµes complexas entre dados, permitindo que modelos identifiquem padrÃµes que dificilmente seriam percebidos por mÃ©todos tradicionais. Outro conceito essencial Ã© a regressÃ£o, utilizada para prever valores numÃ©ricos a partir de um conjunto de variÃ¡veis. JÃ¡ os algoritmos de classificaÃ§Ã£o permitem categorizar dados em grupos distintos, sendo amplamente utilizados em Ã¡reas como detecÃ§Ã£o de fraudes, diagnÃ³sticos mÃ©dicos e anÃ¡lise de imagens.
 
-        A IA também engloba técnicas como processamento de linguagem natural, visão computacional e sistemas especialistas, que juntos formam um conjunto abrangente de ferramentas aplicáveis a diferentes setores. No entanto, antes de dominar as aplicações práticas, é fundamental compreender os princípios teóricos que sustentam essas tecnologias: como os modelos aprendem, como os dados influenciam os resultados e quais métricas são utilizadas para avaliar a precisão e o desempenho.
+        A IA tambÃ©m engloba tÃ©cnicas como processamento de linguagem natural, visÃ£o computacional e sistemas especialistas, que juntos formam um conjunto abrangente de ferramentas aplicÃ¡veis a diferentes setores. No entanto, antes de dominar as aplicaÃ§Ãµes prÃ¡ticas, Ã© fundamental compreender os princÃ­pios teÃ³ricos que sustentam essas tecnologias: como os modelos aprendem, como os dados influenciam os resultados e quais mÃ©tricas sÃ£o utilizadas para avaliar a precisÃ£o e o desempenho.
 
-        Dominar os fundamentos de IA significa adquirir a base necessária para navegar com segurança em projetos reais, tomar decisões informadas e entender tanto o potencial quanto as limitações dessa tecnologia. É o primeiro passo para explorar campos mais avançados, como aprendizado profundo, otimização de modelos e desenvolvimento de soluções inteligentes de alto impacto.',
+        Dominar os fundamentos de IA significa adquirir a base necessÃ¡ria para navegar com seguranÃ§a em projetos reais, tomar decisÃµes informadas e entender tanto o potencial quanto as limitaÃ§Ãµes dessa tecnologia. Ã‰ o primeiro passo para explorar campos mais avanÃ§ados, como aprendizado profundo, otimizaÃ§Ã£o de modelos e desenvolvimento de soluÃ§Ãµes inteligentes de alto impacto.',
         t2
     );
     pkg_inserts.inserir_conteudo_trilha(
         '6e5f7b8c-3c4d-5a2b-8d33-8c9e7f6a5b55',
         'Machine Learning Aplicado',
-        'Vídeo',
-        'https://videos.com/mlaplicado789',
+        'VÃ­deo',
+        'https://www.youtube.com/watch?v=0PrOA2JK6GQ',
         t2
     );
     pkg_inserts.inserir_conteudo_trilha(
         '7f6a8c9d-4d5e-6b3c-9e44-9d0f8a7b6c66',
-        'Casos Práticos',
+        'Casos PrÃ¡ticos',
         'Artigo',
-        'A aplicação prática de técnicas de machine learning tem transformado diversas indústrias, demonstrando que algoritmos bem treinados podem gerar insights valiosos, automatizar processos complexos e resolver problemas que antes eram considerados desafiadores demais para abordagens tradicionais. Estudar casos reais é uma das melhores maneiras de entender como essas tecnologias se comportam em situações concretas, revelando tanto seu potencial quanto suas limitações.
+        'A aplicaÃ§Ã£o prÃ¡tica de tÃ©cnicas de machine learning tem transformado diversas indÃºstrias, demonstrando que algoritmos bem treinados podem gerar insights valiosos, automatizar processos complexos e resolver problemas que antes eram considerados desafiadores demais para abordagens tradicionais. Estudar casos reais Ã© uma das melhores maneiras de entender como essas tecnologias se comportam em situaÃ§Ãµes concretas, revelando tanto seu potencial quanto suas limitaÃ§Ãµes.
 
-        Um dos exemplos mais emblemáticos é o uso de modelos de classificação para detecção automática de fraudes em transações financeiras. Instituições bancárias utilizam algoritmos que analisam padrões de comportamento — como horários, valores e locais — para identificar atividades suspeitas em tempo real. Esses sistemas aprendem continuamente com novos dados, tornando-se cada vez mais precisos na distinção entre transações legítimas e fraudulentas.
+        Um dos exemplos mais emblemÃ¡ticos Ã© o uso de modelos de classificaÃ§Ã£o para detecÃ§Ã£o automÃ¡tica de fraudes em transaÃ§Ãµes financeiras. InstituiÃ§Ãµes bancÃ¡rias utilizam algoritmos que analisam padrÃµes de comportamento â€” como horÃ¡rios, valores e locais â€” para identificar atividades suspeitas em tempo real. Esses sistemas aprendem continuamente com novos dados, tornando-se cada vez mais precisos na distinÃ§Ã£o entre transaÃ§Ãµes legÃ­timas e fraudulentas.
 
-        Na área da saúde, modelos preditivos têm sido aplicados para auxiliar diagnósticos médicos, detectando doenças em estágios iniciais a partir de exames laboratoriais e imagens. Técnicas como redes neurais convolucionais permitem identificar anomalias em radiografias e tomografias com impressionante precisão, oferecendo suporte valioso para médicos e reduzindo o risco de diagnósticos tardios.
+        Na Ã¡rea da saÃºde, modelos preditivos tÃªm sido aplicados para auxiliar diagnÃ³sticos mÃ©dicos, detectando doenÃ§as em estÃ¡gios iniciais a partir de exames laboratoriais e imagens. TÃ©cnicas como redes neurais convolucionais permitem identificar anomalias em radiografias e tomografias com impressionante precisÃ£o, oferecendo suporte valioso para mÃ©dicos e reduzindo o risco de diagnÃ³sticos tardios.
 
-        No setor de marketing, algoritmos de recomendação transformaram a experiência do consumidor em plataformas digitais. Analisando comportamentos, preferências e histórico de navegação, os sistemas conseguem sugerir produtos e conteúdos altamente personalizados, aumentando engajamento e conversão. Esse tipo de abordagem também é utilizado em serviços de streaming para recomendar filmes, séries e músicas alinhadas ao gosto do usuário.
+        No setor de marketing, algoritmos de recomendaÃ§Ã£o transformaram a experiÃªncia do consumidor em plataformas digitais. Analisando comportamentos, preferÃªncias e histÃ³rico de navegaÃ§Ã£o, os sistemas conseguem sugerir produtos e conteÃºdos altamente personalizados, aumentando engajamento e conversÃ£o. Esse tipo de abordagem tambÃ©m Ã© utilizado em serviÃ§os de streaming para recomendar filmes, sÃ©ries e mÃºsicas alinhadas ao gosto do usuÃ¡rio.
 
-        Casos práticos também aparecem na otimização logística, onde modelos de previsão de demanda e roteamento inteligente reduzem custos e aumentam eficiência. Em indústrias, técnicas de manutenção preditiva analisam dados de sensores para identificar falhas antes que ocorram, aumentando a segurança e prolongando a vida útil de máquinas.
+        Casos prÃ¡ticos tambÃ©m aparecem na otimizaÃ§Ã£o logÃ­stica, onde modelos de previsÃ£o de demanda e roteamento inteligente reduzem custos e aumentam eficiÃªncia. Em indÃºstrias, tÃ©cnicas de manutenÃ§Ã£o preditiva analisam dados de sensores para identificar falhas antes que ocorram, aumentando a seguranÃ§a e prolongando a vida Ãºtil de mÃ¡quinas.
 
-        Estudar esses exemplos reais permite compreender não apenas a teoria por trás dos algoritmos, mas também os desafios enfrentados — como qualidade dos dados, viés, escalabilidade e performance — e como eles são solucionados em projetos de grande impacto.',
+        Estudar esses exemplos reais permite compreender nÃ£o apenas a teoria por trÃ¡s dos algoritmos, mas tambÃ©m os desafios enfrentados â€” como qualidade dos dados, viÃ©s, escalabilidade e performance â€” e como eles sÃ£o solucionados em projetos de grande impacto.',
         t2
     );
 
     pkg_inserts.inserir_conteudo_trilha(
         '81a2b3c4-5d6e-7f80-1a2b-3c4d5e6f7a77',
         'Produtividade Digital',
-        'Vídeo',
-        'https://videos.com/produtividade001',
+        'VÃ­deo',
+        'https://www.youtube.com/watch?v=dSsmvXLLgAI',
         t3
     );
     pkg_inserts.inserir_conteudo_trilha(
         '92b3c4d5-6e7f-8091-2b3c-4d5e6f7a8b88',
-        'Organização de Fluxo',
+        'OrganizaÃ§Ã£o de Fluxo',
         'Artigo',
-        'Organizar fluxos de trabalho digitais é uma etapa fundamental para qualquer equipe que busca aumentar a eficiência, minimizar retrabalhos e criar processos mais previsíveis. A construção de um bom fluxo começa pela compreensão clara das etapas essenciais de uma tarefa e da forma como elas se conectam entre si. Quando essa estrutura não é bem definida, surgem gargalos, atrasos e inconsistências que afetam diretamente a qualidade das entregas e a produtividade do time. Por isso, entender o fluxo como uma cadeia integrada ajuda a identificar pontos críticos e oportunidades de melhoria.
+        'Organizar fluxos de trabalho digitais Ã© uma etapa fundamental para qualquer equipe que busca aumentar a eficiÃªncia, minimizar retrabalhos e criar processos mais previsÃ­veis. A construÃ§Ã£o de um bom fluxo comeÃ§a pela compreensÃ£o clara das etapas essenciais de uma tarefa e da forma como elas se conectam entre si. Quando essa estrutura nÃ£o Ã© bem definida, surgem gargalos, atrasos e inconsistÃªncias que afetam diretamente a qualidade das entregas e a produtividade do time. Por isso, entender o fluxo como uma cadeia integrada ajuda a identificar pontos crÃ­ticos e oportunidades de melhoria.
 
-        Um dos pilares de um bom fluxo é a padronização. Isso significa criar um conjunto de regras, templates e orientações que orientem as atividades de forma uniforme, evitando variações desnecessárias. Além disso, a visibilidade do processo é indispensável. Utilizar ferramentas digitais que permitam acompanhar o andamento das tarefas em tempo real facilita a comunicação entre os membros da equipe e reduz o tempo gasto para esclarecer dúvidas ou localizar informações. Quando todos sabem exatamente em que etapa cada item está, o risco de erros diminui consideravelmente.
+        Um dos pilares de um bom fluxo Ã© a padronizaÃ§Ã£o. Isso significa criar um conjunto de regras, templates e orientaÃ§Ãµes que orientem as atividades de forma uniforme, evitando variaÃ§Ãµes desnecessÃ¡rias. AlÃ©m disso, a visibilidade do processo Ã© indispensÃ¡vel. Utilizar ferramentas digitais que permitam acompanhar o andamento das tarefas em tempo real facilita a comunicaÃ§Ã£o entre os membros da equipe e reduz o tempo gasto para esclarecer dÃºvidas ou localizar informaÃ§Ãµes. Quando todos sabem exatamente em que etapa cada item estÃ¡, o risco de erros diminui consideravelmente.
 
-        Outro ponto importante é o mapeamento de responsabilidades. Cada etapa do fluxo deve ter um responsável claro, garantindo que não haja sobreposição de funções ou tarefas esquecidas. Ao mesmo tempo, a automação desempenha um papel essencial: atividades repetitivas e manuais podem ser automatizadas para liberar tempo para tarefas mais estratégicas. Por fim, bons fluxos são vivos e devem ser revisados regularmente. Analisar métricas, coletar feedback e testar novas abordagens faz parte do processo de evolução contínua, permitindo que o fluxo se adapte às necessidades do time, do projeto e do negócio como um todo.',
+        Outro ponto importante Ã© o mapeamento de responsabilidades. Cada etapa do fluxo deve ter um responsÃ¡vel claro, garantindo que nÃ£o haja sobreposiÃ§Ã£o de funÃ§Ãµes ou tarefas esquecidas. Ao mesmo tempo, a automaÃ§Ã£o desempenha um papel essencial: atividades repetitivas e manuais podem ser automatizadas para liberar tempo para tarefas mais estratÃ©gicas. Por fim, bons fluxos sÃ£o vivos e devem ser revisados regularmente. Analisar mÃ©tricas, coletar feedback e testar novas abordagens faz parte do processo de evoluÃ§Ã£o contÃ­nua, permitindo que o fluxo se adapte Ã s necessidades do time, do projeto e do negÃ³cio como um todo.',
         t3
     );
     pkg_inserts.inserir_conteudo_trilha(
         'a3c4d5e6-7f80-9102-3c4d-5e6f7a8b9c99',
-        'Segurança Básica',
-        'Vídeo',
-        'https://videos.com/seguranca002',
+        'SeguranÃ§a BÃ¡sica',
+        'VÃ­deo',
+        'https://www.youtube.com/watch?v=Gfh2bxe3hGU',
         t3
     );
 
@@ -440,37 +440,37 @@ begin
         'b4d5e6f7-8091-1023-4d5e-6f7a8b9c0d10',
         'Planejamento de Carreira',
         'Artigo',
-        'Planejar a carreira é um processo contínuo que envolve autoconhecimento, análise de oportunidades e definição de metas realistas para o futuro profissional. Muitas pessoas acreditam que a carreira se desenvolve de forma natural, mas na prática os profissionais que alcançam resultados consistentes são aqueles que estruturam seus objetivos com clareza e revisam suas metas ao longo do tempo. O planejamento começa pela compreensão profunda das próprias habilidades, interesses e valores. Esse exercício permite identificar caminhos que fazem sentido e evitam decisões impulsivas baseadas apenas nas condições do momento.
+        'Planejar a carreira Ã© um processo contÃ­nuo que envolve autoconhecimento, anÃ¡lise de oportunidades e definiÃ§Ã£o de metas realistas para o futuro profissional. Muitas pessoas acreditam que a carreira se desenvolve de forma natural, mas na prÃ¡tica os profissionais que alcanÃ§am resultados consistentes sÃ£o aqueles que estruturam seus objetivos com clareza e revisam suas metas ao longo do tempo. O planejamento comeÃ§a pela compreensÃ£o profunda das prÃ³prias habilidades, interesses e valores. Esse exercÃ­cio permite identificar caminhos que fazem sentido e evitam decisÃµes impulsivas baseadas apenas nas condiÃ§Ãµes do momento.
 
-        Além disso, é fundamental analisar o mercado de trabalho, entendendo tendências, novas profissões, habilidades emergentes e as transformações tecnológicas que influenciam diferentes setores. Com essas informações em mãos, torna-se mais fácil criar um plano coerente, estruturado em etapas claras. Uma boa estratégia envolve estabelecer metas de curto, médio e longo prazo, sempre mensuráveis e alinhadas às aspirações pessoais. Esse processo inclui desde a participação em cursos e certificações até o desenvolvimento de habilidades comportamentais essenciais, como comunicação, liderança e adaptabilidade.
+        AlÃ©m disso, Ã© fundamental analisar o mercado de trabalho, entendendo tendÃªncias, novas profissÃµes, habilidades emergentes e as transformaÃ§Ãµes tecnolÃ³gicas que influenciam diferentes setores. Com essas informaÃ§Ãµes em mÃ£os, torna-se mais fÃ¡cil criar um plano coerente, estruturado em etapas claras. Uma boa estratÃ©gia envolve estabelecer metas de curto, mÃ©dio e longo prazo, sempre mensurÃ¡veis e alinhadas Ã s aspiraÃ§Ãµes pessoais. Esse processo inclui desde a participaÃ§Ã£o em cursos e certificaÃ§Ãµes atÃ© o desenvolvimento de habilidades comportamentais essenciais, como comunicaÃ§Ã£o, lideranÃ§a e adaptabilidade.
 
-        Outro ponto crucial no planejamento de carreira é a construção de um portfólio sólido e a criação de uma rede de contatos relevante. Networking não serve apenas para buscar oportunidades; ele ajuda a manter-se atualizado e permite aprender com profissionais experientes. Revisar o plano regularmente e ajustar rotas também faz parte da jornada, pois a carreira não é um caminho linear. Mudanças de mercado, novas tecnologias e interesses pessoais evoluem com o tempo, exigindo flexibilidade e capacidade de adaptação. Dessa forma, o planejamento de carreira se torna uma ferramenta poderosa para alcançar crescimento sustentável e realização profissional.',
+        Outro ponto crucial no planejamento de carreira Ã© a construÃ§Ã£o de um portfÃ³lio sÃ³lido e a criaÃ§Ã£o de uma rede de contatos relevante. Networking nÃ£o serve apenas para buscar oportunidades; ele ajuda a manter-se atualizado e permite aprender com profissionais experientes. Revisar o plano regularmente e ajustar rotas tambÃ©m faz parte da jornada, pois a carreira nÃ£o Ã© um caminho linear. MudanÃ§as de mercado, novas tecnologias e interesses pessoais evoluem com o tempo, exigindo flexibilidade e capacidade de adaptaÃ§Ã£o. Dessa forma, o planejamento de carreira se torna uma ferramenta poderosa para alcanÃ§ar crescimento sustentÃ¡vel e realizaÃ§Ã£o profissional.',
         t4
     );
     pkg_inserts.inserir_conteudo_trilha(
         'c5e6f708-9102-2134-5e6f-7a8b9c0d1e21',
-        'Portfólio Técnico',
-        'Vídeo',
-        'https://videos.com/portfolio003',
+        'PortfÃ³lio TÃ©cnico',
+        'VÃ­deo',
+        'https://www.youtube.com/watch?v=EtrE7icLfxs',
         t4
     );
 
     pkg_inserts.inserir_conteudo_trilha(
         'd6f70819-0123-3245-6f70-8a9b0c1d2e32',
-        'Modelos de Negócio',
+        'Modelos de NegÃ³cio',
         'Artigo',
-        'Compreender modelos de negócio é essencial para qualquer pessoa que deseja criar, gerenciar ou expandir uma empresa. Um modelo de negócio descreve de forma clara como uma organização cria, entrega e captura valor dentro de um mercado. Ele funciona como a estrutura lógica que sustenta a operação e orienta as principais decisões estratégicas. Existem vários tipos de modelos, como assinatura, marketplace, freemium, e-commerce tradicional, franquias e muitos outros, cada um com características que atendem a necessidades específicas de consumidores e segmentos.
+        'Compreender modelos de negÃ³cio Ã© essencial para qualquer pessoa que deseja criar, gerenciar ou expandir uma empresa. Um modelo de negÃ³cio descreve de forma clara como uma organizaÃ§Ã£o cria, entrega e captura valor dentro de um mercado. Ele funciona como a estrutura lÃ³gica que sustenta a operaÃ§Ã£o e orienta as principais decisÃµes estratÃ©gicas. Existem vÃ¡rios tipos de modelos, como assinatura, marketplace, freemium, e-commerce tradicional, franquias e muitos outros, cada um com caracterÃ­sticas que atendem a necessidades especÃ­ficas de consumidores e segmentos.
 
-        Ao estudar modelos de negócio, o empreendedor começa a perceber como diferentes empresas utilizam estratégias distintas para gerar receita e se diferenciar no mercado. Por exemplo, negócios baseados em assinatura priorizam retenção e previsibilidade financeira, enquanto marketplaces se concentram em conectar compradores e vendedores sem necessariamente produzir bens próprios. Essas escolhas afetam diretamente áreas como marketing, logística, experiência do cliente e estrutura de custos.
+        Ao estudar modelos de negÃ³cio, o empreendedor comeÃ§a a perceber como diferentes empresas utilizam estratÃ©gias distintas para gerar receita e se diferenciar no mercado. Por exemplo, negÃ³cios baseados em assinatura priorizam retenÃ§Ã£o e previsibilidade financeira, enquanto marketplaces se concentram em conectar compradores e vendedores sem necessariamente produzir bens prÃ³prios. Essas escolhas afetam diretamente Ã¡reas como marketing, logÃ­stica, experiÃªncia do cliente e estrutura de custos.
 
-        Outro ponto importante é avaliar a proposta de valor, ou seja, o motivo pelo qual um cliente escolheria aquela solução em vez das alternativas existentes. A proposta de valor deve resolver um problema real, oferecer benefícios concretos e se comunicar de forma clara ao público-alvo. Ao mapear o modelo de negócio, ferramentas como o Business Model Canvas tornam o processo mais visual e compreensível, ajudando a identificar oportunidades e riscos. Testar hipóteses e validar ideias no mercado também é parte essencial, pois evita investimentos altos em modelos que não têm aderência. Entender modelos de negócio é, portanto, uma habilidade estratégica para inovar, competir e crescer de maneira sustentável.',
+        Outro ponto importante Ã© avaliar a proposta de valor, ou seja, o motivo pelo qual um cliente escolheria aquela soluÃ§Ã£o em vez das alternativas existentes. A proposta de valor deve resolver um problema real, oferecer benefÃ­cios concretos e se comunicar de forma clara ao pÃºblico-alvo. Ao mapear o modelo de negÃ³cio, ferramentas como o Business Model Canvas tornam o processo mais visual e compreensÃ­vel, ajudando a identificar oportunidades e riscos. Testar hipÃ³teses e validar ideias no mercado tambÃ©m Ã© parte essencial, pois evita investimentos altos em modelos que nÃ£o tÃªm aderÃªncia. Entender modelos de negÃ³cio Ã©, portanto, uma habilidade estratÃ©gica para inovar, competir e crescer de maneira sustentÃ¡vel.',
         t5
     );
     pkg_inserts.inserir_conteudo_trilha(
         'e7f8192a-1234-4356-7071-9b0c1d2e3f43',
-        'Validação de Ideia',
-        'Vídeo',
-        'https://videos.com/validacao004',
+        'ValidaÃ§Ã£o de Ideia',
+        'VÃ­deo',
+        'https://www.youtube.com/watch?v=vHvpcs7aTDo',
         t5
     );
 
@@ -478,67 +478,67 @@ begin
         'f8091a2b-2345-5467-8172-0c1d2e3f4a54',
         'Rotina Produtiva',
         'Artigo',
-        'Manter uma rotina produtiva é um dos pilares do desenvolvimento pessoal e profissional, permitindo que as pessoas utilizem seu tempo de maneira eficiente e alcancem resultados consistentes ao longo do tempo. Uma rotina bem planejada não apenas organiza o dia, mas também cria um ambiente mental favorável para foco, disciplina e clareza de prioridades. Para isso, o primeiro passo é identificar os objetivos principais e estabelecer quais atividades são realmente essenciais para alcançá-los. Quando há essa clareza, torna-se mais fácil evitar distrações e direcionar energia para ações que realmente importam.
+        'Manter uma rotina produtiva Ã© um dos pilares do desenvolvimento pessoal e profissional, permitindo que as pessoas utilizem seu tempo de maneira eficiente e alcancem resultados consistentes ao longo do tempo. Uma rotina bem planejada nÃ£o apenas organiza o dia, mas tambÃ©m cria um ambiente mental favorÃ¡vel para foco, disciplina e clareza de prioridades. Para isso, o primeiro passo Ã© identificar os objetivos principais e estabelecer quais atividades sÃ£o realmente essenciais para alcanÃ§Ã¡-los. Quando hÃ¡ essa clareza, torna-se mais fÃ¡cil evitar distraÃ§Ãµes e direcionar energia para aÃ§Ãµes que realmente importam.
 
-        Outro aspecto importante de uma rotina produtiva é a criação de hábitos. Habituar-se a começar o dia com tarefas de maior impacto, por exemplo, aumenta significativamente a sensação de progresso. Estruturas como o método Pomodoro, blocos de tempo e listas priorizadas ajudam a organizar o fluxo de forma equilibrada, reduzindo a procrastinação e aumentando a concentração. Além disso, incorporar pausas estratégicas ao longo do dia é fundamental para manter o desempenho, já que períodos longos de trabalho contínuo tendem a gerar fadiga e prejudicar a qualidade das entregas.
+        Outro aspecto importante de uma rotina produtiva Ã© a criaÃ§Ã£o de hÃ¡bitos. Habituar-se a comeÃ§ar o dia com tarefas de maior impacto, por exemplo, aumenta significativamente a sensaÃ§Ã£o de progresso. Estruturas como o mÃ©todo Pomodoro, blocos de tempo e listas priorizadas ajudam a organizar o fluxo de forma equilibrada, reduzindo a procrastinaÃ§Ã£o e aumentando a concentraÃ§Ã£o. AlÃ©m disso, incorporar pausas estratÃ©gicas ao longo do dia Ã© fundamental para manter o desempenho, jÃ¡ que perÃ­odos longos de trabalho contÃ­nuo tendem a gerar fadiga e prejudicar a qualidade das entregas.
 
-        A disciplina também desempenha um papel crucial. Ter uma rotina não significa rigidez extrema, mas sim consistência. Ajustar horários, eliminar distrações e criar ambientes adequados ao trabalho são ações que reforçam o compromisso com a produtividade. Por fim, uma rotina produtiva deve ser revisada constantemente, levando em conta mudanças no trabalho, na saúde e nas demandas pessoais. Adaptar-se é tão importante quanto manter-se organizado. Ao equilibrar foco, flexibilidade e hábitos saudáveis, qualquer pessoa consegue construir uma rotina que potencializa seu desempenho e contribui para uma vida mais equilibrada e satisfatória.',
+        A disciplina tambÃ©m desempenha um papel crucial. Ter uma rotina nÃ£o significa rigidez extrema, mas sim consistÃªncia. Ajustar horÃ¡rios, eliminar distraÃ§Ãµes e criar ambientes adequados ao trabalho sÃ£o aÃ§Ãµes que reforÃ§am o compromisso com a produtividade. Por fim, uma rotina produtiva deve ser revisada constantemente, levando em conta mudanÃ§as no trabalho, na saÃºde e nas demandas pessoais. Adaptar-se Ã© tÃ£o importante quanto manter-se organizado. Ao equilibrar foco, flexibilidade e hÃ¡bitos saudÃ¡veis, qualquer pessoa consegue construir uma rotina que potencializa seu desempenho e contribui para uma vida mais equilibrada e satisfatÃ³ria.',
         t6
     );
     pkg_inserts.inserir_conteudo_trilha(
         '0a1b2c3d-3456-6578-9273-1d2e3f4a5b65',
-        'Técnicas de Foco',
-        'Vídeo',
-        'https://videos.com/foco005',
+        'TÃ©cnicas de Foco',
+        'VÃ­deo',
+        'https://www.youtube.com/watch?v=U9iE090X-64',
         t6
     );
 
     pkg_inserts.inserir_conteudo_trilha(
         '1b2c3d4e-4567-7689-a384-2e3f4a5b6c76',
-        'Comunicação Efetiva',
+        'ComunicaÃ§Ã£o Efetiva',
         'Artigo',
-        'A comunicação efetiva é uma das habilidades mais essenciais na vida profissional e pessoal, pois influencia diretamente a qualidade das relações, a resolução de conflitos e a capacidade de transmitir ideias de maneira clara e persuasiva. Para se comunicar bem, é fundamental entender que comunicação não é apenas falar, mas também ouvir, interpretar e adaptar a mensagem conforme o contexto. A escuta ativa, por exemplo, é um componente central desse processo, pois permite compreender verdadeiramente o que o outro está dizendo, evitando interpretações distorcidas e respostas impulsivas.
+        'A comunicaÃ§Ã£o efetiva Ã© uma das habilidades mais essenciais na vida profissional e pessoal, pois influencia diretamente a qualidade das relaÃ§Ãµes, a resoluÃ§Ã£o de conflitos e a capacidade de transmitir ideias de maneira clara e persuasiva. Para se comunicar bem, Ã© fundamental entender que comunicaÃ§Ã£o nÃ£o Ã© apenas falar, mas tambÃ©m ouvir, interpretar e adaptar a mensagem conforme o contexto. A escuta ativa, por exemplo, Ã© um componente central desse processo, pois permite compreender verdadeiramente o que o outro estÃ¡ dizendo, evitando interpretaÃ§Ãµes distorcidas e respostas impulsivas.
 
-        Além disso, a comunicação verbal exige atenção ao tom de voz, à escolha das palavras e à estrutura das frases. Pequenos ajustes podem fazer com que uma mensagem simples se torne mais clara, objetiva e acolhedora. No ambiente profissional, isso pode significar a diferença entre um projeto bem alinhado e uma série de retrabalhos gerados por falhas na comunicação. Já a comunicação escrita requer ainda mais cuidado, especialmente em tempos de mensagens rápidas, e-mails e conversas digitais. Revisar textos, organizar ideias e evitar ambiguidades são práticas fundamentais para transmitir credibilidade e profissionalismo.
+        AlÃ©m disso, a comunicaÃ§Ã£o verbal exige atenÃ§Ã£o ao tom de voz, Ã  escolha das palavras e Ã  estrutura das frases. Pequenos ajustes podem fazer com que uma mensagem simples se torne mais clara, objetiva e acolhedora. No ambiente profissional, isso pode significar a diferenÃ§a entre um projeto bem alinhado e uma sÃ©rie de retrabalhos gerados por falhas na comunicaÃ§Ã£o. JÃ¡ a comunicaÃ§Ã£o escrita requer ainda mais cuidado, especialmente em tempos de mensagens rÃ¡pidas, e-mails e conversas digitais. Revisar textos, organizar ideias e evitar ambiguidades sÃ£o prÃ¡ticas fundamentais para transmitir credibilidade e profissionalismo.
 
-        Outro ponto importante é entender que a comunicação efetiva envolve também aspectos não verbais, como postura corporal, expressões faciais e contato visual. Muitas vezes, a linguagem corporal comunica mais do que as palavras, reforçando — ou contradizendo — a mensagem verbal. Desenvolver sensibilidade para esses elementos ajuda a construir relacionamentos mais sólidos e empáticos. Por fim, aprimorar a comunicação é um processo contínuo que envolve prática, autoconhecimento e disposição para ajustar comportamentos. Quando cultivada de forma consciente, essa habilidade se torna um diferencial competitivo e um poderoso instrumento para criar conexões significativas.',
+        Outro ponto importante Ã© entender que a comunicaÃ§Ã£o efetiva envolve tambÃ©m aspectos nÃ£o verbais, como postura corporal, expressÃµes faciais e contato visual. Muitas vezes, a linguagem corporal comunica mais do que as palavras, reforÃ§ando â€” ou contradizendo â€” a mensagem verbal. Desenvolver sensibilidade para esses elementos ajuda a construir relacionamentos mais sÃ³lidos e empÃ¡ticos. Por fim, aprimorar a comunicaÃ§Ã£o Ã© um processo contÃ­nuo que envolve prÃ¡tica, autoconhecimento e disposiÃ§Ã£o para ajustar comportamentos. Quando cultivada de forma consciente, essa habilidade se torna um diferencial competitivo e um poderoso instrumento para criar conexÃµes significativas.',
         t7
     );
     pkg_inserts.inserir_conteudo_trilha(
         '2c3d4e5f-5678-879a-b495-3f4a5b6c7d87',
         'Trabalho em Equipe',
-        'Vídeo',
-        'https://videos.com/equipe006',
+        'VÃ­deo',
+        'https://www.youtube.com/watch?v=r6HcE6Bc6KE',
         t7
     );
     pkg_inserts.inserir_conteudo_trilha(
         '3d4e5f60-6789-98ab-c5a6-4a5b6c7d8e98',
         'Feedback Construtivo',
         'Artigo',
-        'O feedback construtivo é uma ferramenta poderosa para estimular o crescimento profissional e fortalecer relações de trabalho. Diferente de críticas vagas ou apontamentos puramente negativos, o feedback construtivo busca orientar, apoiar e promover melhorias reais no comportamento ou na performance de uma pessoa. Para oferecê-lo de maneira eficaz, é fundamental que ele seja claro, objetivo e específico, evitando generalizações que podem gerar confusão ou sentimentos de insegurança. A ideia central é mostrar o que pode ser aprimorado, mas também reconhecer pontos fortes e reforçar comportamentos positivos.
+        'O feedback construtivo Ã© uma ferramenta poderosa para estimular o crescimento profissional e fortalecer relaÃ§Ãµes de trabalho. Diferente de crÃ­ticas vagas ou apontamentos puramente negativos, o feedback construtivo busca orientar, apoiar e promover melhorias reais no comportamento ou na performance de uma pessoa. Para oferecÃª-lo de maneira eficaz, Ã© fundamental que ele seja claro, objetivo e especÃ­fico, evitando generalizaÃ§Ãµes que podem gerar confusÃ£o ou sentimentos de inseguranÃ§a. A ideia central Ã© mostrar o que pode ser aprimorado, mas tambÃ©m reconhecer pontos fortes e reforÃ§ar comportamentos positivos.
 
-        Uma estratégia bastante utilizada é o modelo de feedback baseado em fatos observáveis. Nesse método, a pessoa que dará o feedback descreve situações concretas, explica o impacto da ação e sugere alternativas de melhoria. Isso evita julgamentos pessoais e torna a conversa mais produtiva. Além disso, o tom deve ser sempre respeitoso, pois o objetivo não é constranger, mas sim contribuir para o desenvolvimento do outro. Em ambientes profissionais, quando o feedback é incorporado como prática regular, ele se torna um dos principais mecanismos de evolução individual e coletiva.
+        Uma estratÃ©gia bastante utilizada Ã© o modelo de feedback baseado em fatos observÃ¡veis. Nesse mÃ©todo, a pessoa que darÃ¡ o feedback descreve situaÃ§Ãµes concretas, explica o impacto da aÃ§Ã£o e sugere alternativas de melhoria. Isso evita julgamentos pessoais e torna a conversa mais produtiva. AlÃ©m disso, o tom deve ser sempre respeitoso, pois o objetivo nÃ£o Ã© constranger, mas sim contribuir para o desenvolvimento do outro. Em ambientes profissionais, quando o feedback Ã© incorporado como prÃ¡tica regular, ele se torna um dos principais mecanismos de evoluÃ§Ã£o individual e coletiva.
 
-        Da mesma forma, saber receber feedback é tão importante quanto saber dar. Receber críticas pode gerar desconforto, mas quando encaradas com maturidade, elas se transformam em oportunidades de aprendizado. Manter postura aberta, fazer perguntas e refletir sobre os pontos levantados são atitudes que demonstram profissionalismo e disposição para crescer. Por fim, o feedback construtivo deve ser contínuo, e não algo restrito a momentos formais de avaliação. Quanto mais integrado ao cotidiano, mais natural e eficiente ele se torna, contribuindo para equipes mais colaborativas, transparentes e de alta performance.',
+        Da mesma forma, saber receber feedback Ã© tÃ£o importante quanto saber dar. Receber crÃ­ticas pode gerar desconforto, mas quando encaradas com maturidade, elas se transformam em oportunidades de aprendizado. Manter postura aberta, fazer perguntas e refletir sobre os pontos levantados sÃ£o atitudes que demonstram profissionalismo e disposiÃ§Ã£o para crescer. Por fim, o feedback construtivo deve ser contÃ­nuo, e nÃ£o algo restrito a momentos formais de avaliaÃ§Ã£o. Quanto mais integrado ao cotidiano, mais natural e eficiente ele se torna, contribuindo para equipes mais colaborativas, transparentes e de alta performance.',
         t7
     );
 
     pkg_inserts.inserir_conteudo_trilha(
         '4e5f6071-789a-9abc-d6b7-5b6c7d8e9f09',
-        'Introdução a Analytics',
+        'IntroduÃ§Ã£o a Analytics',
         'Artigo',
-        'Analytics é o processo de coletar, organizar, interpretar e transformar dados em informações úteis, capazes de orientar decisões estratégicas. Em um mundo cada vez mais orientado por dados, compreender esse universo se tornou uma habilidade fundamental para profissionais de praticamente todas as áreas. A análise de dados permite entender comportamentos, identificar padrões, prever tendências e otimizar processos de maneira muito mais precisa do que decisões baseadas apenas em intuição. Por isso, empresas que dominam essa prática conseguem agir de forma mais competitiva, ágil e eficiente.
+        'Analytics Ã© o processo de coletar, organizar, interpretar e transformar dados em informaÃ§Ãµes Ãºteis, capazes de orientar decisÃµes estratÃ©gicas. Em um mundo cada vez mais orientado por dados, compreender esse universo se tornou uma habilidade fundamental para profissionais de praticamente todas as Ã¡reas. A anÃ¡lise de dados permite entender comportamentos, identificar padrÃµes, prever tendÃªncias e otimizar processos de maneira muito mais precisa do que decisÃµes baseadas apenas em intuiÃ§Ã£o. Por isso, empresas que dominam essa prÃ¡tica conseguem agir de forma mais competitiva, Ã¡gil e eficiente.
 
-        O processo de analytics envolve várias etapas. A primeira é a coleta de dados, que pode vir de diversas fontes, como sistemas internos, plataformas digitais, sensores IoT, redes sociais e pesquisas. Em seguida, esses dados precisam ser organizados e limpos, removendo duplicidades e inconsistências que possam distorcer análises. Depois disso, começa a interpretação, que utiliza técnicas estatísticas, ferramentas de visualização e modelos matemáticos para extrair insights relevantes. É nesse momento que surgem descobertas capazes de orientar decisões de alto impacto, como estratégias de marketing, melhorias operacionais ou inovações em produtos.
+        O processo de analytics envolve vÃ¡rias etapas. A primeira Ã© a coleta de dados, que pode vir de diversas fontes, como sistemas internos, plataformas digitais, sensores IoT, redes sociais e pesquisas. Em seguida, esses dados precisam ser organizados e limpos, removendo duplicidades e inconsistÃªncias que possam distorcer anÃ¡lises. Depois disso, comeÃ§a a interpretaÃ§Ã£o, que utiliza tÃ©cnicas estatÃ­sticas, ferramentas de visualizaÃ§Ã£o e modelos matemÃ¡ticos para extrair insights relevantes. Ã‰ nesse momento que surgem descobertas capazes de orientar decisÃµes de alto impacto, como estratÃ©gias de marketing, melhorias operacionais ou inovaÃ§Ãµes em produtos.
 
-        Outro aspecto importante é a visualização de dados. Gráficos, dashboards e relatórios tornam informações complexas mais acessíveis, facilitando a comunicação com gestores e equipes. Ferramentas modernas como Power BI, Tableau e Looker tornam esse processo mais intuitivo e interativo. Por fim, analytics é uma área em constante evolução, impulsionada por tecnologias como machine learning e inteligência artificial, que ampliam a capacidade de análise e predição. Para quem está começando, compreender os princípios básicos e desenvolver raciocínio analítico já é um excelente caminho para atuar em áreas estratégicas e de grande demanda no mercado.',
+        Outro aspecto importante Ã© a visualizaÃ§Ã£o de dados. GrÃ¡ficos, dashboards e relatÃ³rios tornam informaÃ§Ãµes complexas mais acessÃ­veis, facilitando a comunicaÃ§Ã£o com gestores e equipes. Ferramentas modernas como Power BI, Tableau e Looker tornam esse processo mais intuitivo e interativo. Por fim, analytics Ã© uma Ã¡rea em constante evoluÃ§Ã£o, impulsionada por tecnologias como machine learning e inteligÃªncia artificial, que ampliam a capacidade de anÃ¡lise e prediÃ§Ã£o. Para quem estÃ¡ comeÃ§ando, compreender os princÃ­pios bÃ¡sicos e desenvolver raciocÃ­nio analÃ­tico jÃ¡ Ã© um excelente caminho para atuar em Ã¡reas estratÃ©gicas e de grande demanda no mercado.',
         t8
     );
     pkg_inserts.inserir_conteudo_trilha(
         '5f607182-89ab-abcd-e7c8-6c7d8e9f0011',
-        'Visualização de Dados',
-        'Vídeo',
-        'https://videos.com/dataviz007',
+        'VisualizaÃ§Ã£o de Dados',
+        'VÃ­deo',
+        'https://www.youtube.com/watch?v=loYuxWSsLNc',
         t8
     );
 
@@ -546,54 +546,54 @@ begin
         '60718293-9abc-bcde-f8d9-7d8e9f001122',
         'Design Thinking',
         'Artigo',
-        'O Design Thinking é uma abordagem centrada no ser humano que busca compreender profundamente as necessidades, dores e motivações das pessoas antes de qualquer tentativa de solução. Mais do que uma metodologia, trata-se de uma forma de pensar, que valoriza empatia, colaboração multidisciplinar e experimentação constante. Embora muitas vezes seja apresentado como um processo dividido em cinco etapas — Empatia, Definição, Ideação, Prototipagem e Testes — o mais importante é sua flexibilidade e a capacidade de adaptar essas fases ao contexto real do problema.
+        'O Design Thinking Ã© uma abordagem centrada no ser humano que busca compreender profundamente as necessidades, dores e motivaÃ§Ãµes das pessoas antes de qualquer tentativa de soluÃ§Ã£o. Mais do que uma metodologia, trata-se de uma forma de pensar, que valoriza empatia, colaboraÃ§Ã£o multidisciplinar e experimentaÃ§Ã£o constante. Embora muitas vezes seja apresentado como um processo dividido em cinco etapas â€” Empatia, DefiniÃ§Ã£o, IdeaÃ§Ã£o, Prototipagem e Testes â€” o mais importante Ã© sua flexibilidade e a capacidade de adaptar essas fases ao contexto real do problema.
 
-        Na etapa de Empatia, o objetivo é observar e ouvir usuários reais, entendendo como eles se comportam e quais desafios enfrentam no dia a dia. Esse contato direto revela necessidades ocultas e percepções que dificilmente surgiriam através de análises superficiais. Em seguida, a fase de Definição organiza as descobertas, transformando-as em um problema claro e bem formulado, permitindo que a equipe ataque a causa e não apenas os sintomas.
+        Na etapa de Empatia, o objetivo Ã© observar e ouvir usuÃ¡rios reais, entendendo como eles se comportam e quais desafios enfrentam no dia a dia. Esse contato direto revela necessidades ocultas e percepÃ§Ãµes que dificilmente surgiriam atravÃ©s de anÃ¡lises superficiais. Em seguida, a fase de DefiniÃ§Ã£o organiza as descobertas, transformando-as em um problema claro e bem formulado, permitindo que a equipe ataque a causa e nÃ£o apenas os sintomas.
 
-        A fase de Ideação incentiva a criação de diversas possibilidades, estimulando a criatividade e eliminando julgamentos prematuros. A diversidade de ideias aumenta a probabilidade de surgirem soluções ousadas e relevantes. Logo depois, a Prototipagem transforma ideias em modelos simples e funcionais, que podem ser rapidamente testados. Essa prática reduz custos e acelera o aprendizado. Por fim, os Testes colocam o protótipo diante dos usuários, permitindo ajustes, validações e novas descobertas.
+        A fase de IdeaÃ§Ã£o incentiva a criaÃ§Ã£o de diversas possibilidades, estimulando a criatividade e eliminando julgamentos prematuros. A diversidade de ideias aumenta a probabilidade de surgirem soluÃ§Ãµes ousadas e relevantes. Logo depois, a Prototipagem transforma ideias em modelos simples e funcionais, que podem ser rapidamente testados. Essa prÃ¡tica reduz custos e acelera o aprendizado. Por fim, os Testes colocam o protÃ³tipo diante dos usuÃ¡rios, permitindo ajustes, validaÃ§Ãµes e novas descobertas.
 
-        Organizações que adotam Design Thinking conseguem inovar mais rapidamente, reduzir retrabalho e desenvolver soluções mais conectadas com a realidade das pessoas. É uma filosofia essencial para qualquer profissional que deseja criar produtos, processos e experiências realmente significativas.',
+        OrganizaÃ§Ãµes que adotam Design Thinking conseguem inovar mais rapidamente, reduzir retrabalho e desenvolver soluÃ§Ãµes mais conectadas com a realidade das pessoas. Ã‰ uma filosofia essencial para qualquer profissional que deseja criar produtos, processos e experiÃªncias realmente significativas.',
         t9
     );
     pkg_inserts.inserir_conteudo_trilha(
         '718293a4-abcd-cdef-09e1-8e9f00112233',
         'Criatividade Aplicada',
-        'Vídeo',
-        'https://videos.com/criatividade008',
+        'VÃ­deo',
+        'https://www.youtube.com/watch?v=neijx0gAKoQ',
         t9
     );
 
     pkg_inserts.inserir_conteudo_trilha(
         '8293a4b5-bcde-def0-1f22-9f0011223344',
-        'Liderança Situacional',
+        'LideranÃ§a Situacional',
         'Artigo',
-        'A Liderança Situacional é um dos modelos mais utilizados no mundo corporativo por reconhecer que não existe um único estilo de liderança ideal. O líder eficaz é aquele que consegue ajustar sua abordagem com base no nível de maturidade, experiência e engajamento de cada colaborador ou equipe. Dessa forma, a liderança deixa de ser fixa e passa a ser adaptativa, permitindo intervenções mais precisas e produtivas.
+        'A LideranÃ§a Situacional Ã© um dos modelos mais utilizados no mundo corporativo por reconhecer que nÃ£o existe um Ãºnico estilo de lideranÃ§a ideal. O lÃ­der eficaz Ã© aquele que consegue ajustar sua abordagem com base no nÃ­vel de maturidade, experiÃªncia e engajamento de cada colaborador ou equipe. Dessa forma, a lideranÃ§a deixa de ser fixa e passa a ser adaptativa, permitindo intervenÃ§Ãµes mais precisas e produtivas.
 
-        O modelo apresenta quatro estilos principais: Direção, Orientação, Apoio e Delegação. O estilo de Direção é recomendado quando o colaborador ainda não possui conhecimento suficiente para atuar de forma independente. Nesse estágio, o líder fornece instruções claras, define prioridades e acompanha de perto a execução. Já o estilo de Orientação mantém o direcionamento, mas agrega explicações detalhadas e maior estímulo, permitindo que o profissional compreenda não apenas o “como”, mas também o “porquê” das tarefas.
+        O modelo apresenta quatro estilos principais: DireÃ§Ã£o, OrientaÃ§Ã£o, Apoio e DelegaÃ§Ã£o. O estilo de DireÃ§Ã£o Ã© recomendado quando o colaborador ainda nÃ£o possui conhecimento suficiente para atuar de forma independente. Nesse estÃ¡gio, o lÃ­der fornece instruÃ§Ãµes claras, define prioridades e acompanha de perto a execuÃ§Ã£o. JÃ¡ o estilo de OrientaÃ§Ã£o mantÃ©m o direcionamento, mas agrega explicaÃ§Ãµes detalhadas e maior estÃ­mulo, permitindo que o profissional compreenda nÃ£o apenas o â€œcomoâ€, mas tambÃ©m o â€œporquÃªâ€ das tarefas.
 
-        À medida que o colaborador ganha confiança e domínio técnico, o estilo de Apoio se torna apropriado. Nesse momento, o líder reduz o controle e passa a incentivar participação ativa, escuta e tomada conjunta de decisões. Por fim, quando o colaborador atinge plena autonomia, o estilo de Delegação é o mais indicado. Aqui, o líder atua de forma mais distante, realizando apenas alinhamentos periódicos, enquanto o profissional assume responsabilidade total pelo processo.
+        Ã€ medida que o colaborador ganha confianÃ§a e domÃ­nio tÃ©cnico, o estilo de Apoio se torna apropriado. Nesse momento, o lÃ­der reduz o controle e passa a incentivar participaÃ§Ã£o ativa, escuta e tomada conjunta de decisÃµes. Por fim, quando o colaborador atinge plena autonomia, o estilo de DelegaÃ§Ã£o Ã© o mais indicado. Aqui, o lÃ­der atua de forma mais distante, realizando apenas alinhamentos periÃ³dicos, enquanto o profissional assume responsabilidade total pelo processo.
 
-        Aplicar a Liderança Situacional melhora o clima organizacional, reduz conflitos, acelera o desenvolvimento das pessoas e aumenta a produtividade. Mais do que um modelo, ela representa maturidade emocional e inteligência adaptativa, habilidades essenciais para gestores que desejam conduzir times de maneira eficaz em ambientes dinâmicos e desafiadores.',
+        Aplicar a LideranÃ§a Situacional melhora o clima organizacional, reduz conflitos, acelera o desenvolvimento das pessoas e aumenta a produtividade. Mais do que um modelo, ela representa maturidade emocional e inteligÃªncia adaptativa, habilidades essenciais para gestores que desejam conduzir times de maneira eficaz em ambientes dinÃ¢micos e desafiadores.',
         t10
     );
     pkg_inserts.inserir_conteudo_trilha(
         '93a4b5c6-cdef-ef01-2f33-001122334455',
-        'Gestão de Equipes Remotas',
-        'Vídeo',
-        'https://videos.com/remotas009',
+        'GestÃ£o de Equipes Remotas',
+        'VÃ­deo',
+        'https://www.youtube.com/watch?v=piqXHbK8dw4',
         t10
     );
     pkg_inserts.inserir_conteudo_trilha(
         'a4b5c6d7-ef01-0123-3f44-112233445566',
-        'Tomada de Decisão',
+        'Tomada de DecisÃ£o',
         'Artigo',
-        'A Tomada de Decisão é uma das competências mais determinantes para o sucesso de equipes, projetos e organizações. Decidir bem vai muito além de escolher entre alternativas; envolve reconhecer padrões, analisar consequências, compreender riscos e transformar informações complexas em ações concretas. Profissionais que dominam esse processo conseguem agir com clareza mesmo em ambientes de alta pressão e incerteza.
+        'A Tomada de DecisÃ£o Ã© uma das competÃªncias mais determinantes para o sucesso de equipes, projetos e organizaÃ§Ãµes. Decidir bem vai muito alÃ©m de escolher entre alternativas; envolve reconhecer padrÃµes, analisar consequÃªncias, compreender riscos e transformar informaÃ§Ãµes complexas em aÃ§Ãµes concretas. Profissionais que dominam esse processo conseguem agir com clareza mesmo em ambientes de alta pressÃ£o e incerteza.
 
-        Entre os modelos mais tradicionais está o processo racional, que consiste em identificar o problema, levantar opções, avaliar impactos e selecionar a escolha mais vantajosa. Apesar de eficiente, esse modelo pode ser lento em situações urgentes. Por isso, métodos complementares — como heurísticas, matrizes de decisão, análise SWOT, árvores decisórias e mapas mentais — ajudam a tornar o processo mais ágil sem perder qualidade. Cada técnica oferece uma perspectiva diferente e ajuda a equilibrar intuição, lógica e experiência.
+        Entre os modelos mais tradicionais estÃ¡ o processo racional, que consiste em identificar o problema, levantar opÃ§Ãµes, avaliar impactos e selecionar a escolha mais vantajosa. Apesar de eficiente, esse modelo pode ser lento em situaÃ§Ãµes urgentes. Por isso, mÃ©todos complementares â€” como heurÃ­sticas, matrizes de decisÃ£o, anÃ¡lise SWOT, Ã¡rvores decisÃ³rias e mapas mentais â€” ajudam a tornar o processo mais Ã¡gil sem perder qualidade. Cada tÃ©cnica oferece uma perspectiva diferente e ajuda a equilibrar intuiÃ§Ã£o, lÃ³gica e experiÃªncia.
 
-        Além disso, a tomada de decisão eficaz depende fortemente da colaboração. Quando equipes com diferentes visões participam do processo, as chances de erros diminuem e as soluções se tornam mais completas. Entretanto, decidir não é apenas sobre escolher; é também sobre assumir responsabilidade, acompanhar resultados e revisar decisões quando necessário. A capacidade de aprender com erros, ajustar estratégias e manter transparência fortalece a confiança e aumenta a maturidade organizacional.
+        AlÃ©m disso, a tomada de decisÃ£o eficaz depende fortemente da colaboraÃ§Ã£o. Quando equipes com diferentes visÃµes participam do processo, as chances de erros diminuem e as soluÃ§Ãµes se tornam mais completas. Entretanto, decidir nÃ£o Ã© apenas sobre escolher; Ã© tambÃ©m sobre assumir responsabilidade, acompanhar resultados e revisar decisÃµes quando necessÃ¡rio. A capacidade de aprender com erros, ajustar estratÃ©gias e manter transparÃªncia fortalece a confianÃ§a e aumenta a maturidade organizacional.
 
-        Em um mundo onde as mudanças são rápidas e constantes, saber decidir de forma estruturada e consciente se tornou um diferencial competitivo. Dominar técnicas de tomada de decisão ajuda profissionais e líderes a lidarem melhor com desafios inesperados, a priorizarem o que realmente importa e a conduzirem equipes em direção a resultados mais sólidos e sustentáveis.',
+        Em um mundo onde as mudanÃ§as sÃ£o rÃ¡pidas e constantes, saber decidir de forma estruturada e consciente se tornou um diferencial competitivo. Dominar tÃ©cnicas de tomada de decisÃ£o ajuda profissionais e lÃ­deres a lidarem melhor com desafios inesperados, a priorizarem o que realmente importa e a conduzirem equipes em direÃ§Ã£o a resultados mais sÃ³lidos e sustentÃ¡veis.',
         t10
     );
 end;
@@ -619,12 +619,12 @@ declare
     v_profissoes sys.odcivarchar2list := sys.odcivarchar2list(
         'Cientista de Dados',
         'Engenheiro de Software',
-        'Analista de Segurança Cibernética',
+        'Analista de SeguranÃ§a CibernÃ©tica',
         'Designer UX/UI',
         'Analista de Dados',
-        'Gestor de Projetos Ágeis',
-        'Especialista em Inteligência Artificial',
-        'Arquiteto de Soluções',
+        'Gestor de Projetos Ãgeis',
+        'Especialista em InteligÃªncia Artificial',
+        'Arquiteto de SoluÃ§Ãµes',
         'Programador Mobile',
         'Product Manager'
     );
@@ -815,10 +815,12 @@ create or replace package body package_usuario as
 end package_usuario;
 /
 
+/*
 begin
-    package_usuario.prc_popular_trilhas_e_conteudos_usuario('ID_DO_USUARIO');
+    package_usuario.prc_popular_trilhas_e_conteudos_usuario('b1d0ecf1-cc81-4074-9900-a0bd2152231c');
 end;
 /
+*/
 
 commit;
 
