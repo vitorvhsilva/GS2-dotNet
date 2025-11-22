@@ -2,7 +2,33 @@
 
 > API REST .NET 8 para gerenciar trilhas de aprendizado, conteúdos e progresso de usuários.
 
-### Testes (Postman)
+## 🚀 Como Executar
+
+### 1. Pré-requisitos
+- .NET 8 SDK
+- Oracle Database (ou SQL Server)
+
+### 2. Clonar e Configurar
+```bash
+git clone https://github.com/vitorvhsilva/GS2-dotNet
+cd GS2/
+
+# Editar API/appsettings.json com sua conexão Oracle
+# "Data Source=localhost:1521/XE;User Id=usuario;Password=senha;"
+```
+
+### 3. Banco de Dados
+#### Rodar Script SQL presente na raiz do projeto: GS2.sql
+
+
+### 4. Executar API
+```bash
+dotnet run
+```
+
+API disponível em: `https://localhost:7162`
+
+## Testes (Postman)
 
 A collection Postman `gs2-dotnet.postman_collection.json` contém todos os testes de integração da API com requisições HTTP reais.
 
@@ -157,32 +183,6 @@ public async Task PegarTrilha_DeveRetornarTrilha()
 dotnet test
 dotnet test --filter "DisplayName=Deve retornar trilha"
 ```
-
-## 🚀 Como Executar
-
-### 1. Pré-requisitos
-- .NET 8 SDK
-- Oracle Database (ou SQL Server)
-
-### 2. Clonar e Configurar
-```bash
-git clone https://github.com/vitorvhsilva/GS2-dotNet
-cd GS2/
-
-# Editar API/appsettings.json com sua conexão Oracle
-# "Data Source=localhost:1521/XE;User Id=usuario;Password=senha;"
-```
-
-### 3. Banco de Dados
-#### Rodar Script SQL presente na raiz do projeto: GS2.sql
-
-
-### 4. Executar API
-```bash
-dotnet run
-```
-
-API disponível em: `https://localhost:7162`
 
 ## 📝 Endpoints Principais
 
