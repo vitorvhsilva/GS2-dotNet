@@ -11,9 +11,17 @@ using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddDbContext<ApplicationDbContext>(x =>
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
-    x.UseOracle(builder.Configuration.GetConnectionString("Oracle"));
+    var connectionString = builder.Configuration.GetConnectionString("Oracle");
+    
+    options.UseOracle(connectionString, oracleOptions =>
+    {
+        oracleOptions.MaxBatchSize(100);
+    });
+    
+    options.EnableSensitiveDataLogging(false);
+    options.EnableDetailedErrors(builder.Environment.IsDevelopment());
 });
 
 builder.Services.AddTransient<ITrilhaUsuarioUseCase, TrilhaUsuarioUseCase>();
